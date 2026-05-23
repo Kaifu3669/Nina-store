@@ -149,6 +149,46 @@ function searchProducts(){
   }
 
 } 
+let adminProduct =
+JSON.parse(
+localStorage.getItem(
+"adminProduct"
+));
+
+if(adminProduct){
+
+  let products =
+  document.querySelector(
+    ".products"
+  );
+
+  products.innerHTML += `
+
+  <div class="card">
+
+  <img
+  src="${adminProduct.image}"
+  alt="${adminProduct.name}"
+  loading="lazy"
+  >
+
+  <h2>
+  ${adminProduct.name}
+  </h2>
+
+  <p>
+  ${adminProduct.price}
+  </p>
+
+  <button>
+  Add To Cart
+  </button>
+
+  </div>
+
+  `;
+
+} 
 </script> 
   <footer>
 
