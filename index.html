@@ -59,7 +59,23 @@ function addToCart(){
   window.location.href = "cart.html";
 
 }
+function addToCart2(){
 
+  let product = {
+    name:"Wireless Earbuds",
+    price:"₹4,999"
+  };
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(product)
+  );
+
+  alert("Product Added To Cart 😏");
+
+  window.location.href = "cart.html";
+
+} 
 </script> 
   
 </body>
