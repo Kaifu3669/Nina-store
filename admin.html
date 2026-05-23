@@ -49,7 +49,7 @@ button{
 </style>
 
 </head>
-<body>
+<body onload="checkPassword()"> 
 
 <div class="box">
 
@@ -110,7 +110,21 @@ function saveProduct(){
   alert("Product Saved 😏");
 
 }
+function checkPassword(){
 
+  let pass =
+  prompt("Enter Admin Password 😏");
+
+  if(pass !== "Kaif3669"){
+
+    alert("Wrong Password");
+
+    window.location.href =
+    "index.html";
+
+  }
+
+} 
 </script>
 
 </body>
