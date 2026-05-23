@@ -28,6 +28,26 @@
     </div>
 
   </section>
+<script>
 
+function addToCart(){
+
+  let product = {
+    name:"Sennheiser AMBEO SMART HEADSET",
+    price:"₹20,000"
+  };
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(product)
+  );
+
+  alert("Product Added To Cart 😏");
+
+  window.location.href = "cart.html";
+
+}
+
+</script> 
 </body>
 </html>
