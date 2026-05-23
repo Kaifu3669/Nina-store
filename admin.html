@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel</title>
+
+<style>
+
+body{
+  background:#111;
+  color:white;
+  font-family:Arial;
+  padding:20px;
+}
+
+.box{
+  max-width:500px;
+  margin:auto;
+  background:#1e1e1e;
+  padding:25px;
+  border-radius:20px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  margin-top:15px;
+  border:none;
+  border-radius:12px;
+  background:white;
+  color:black;
+  font-weight:bold;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="box">
+
+<h1>Secret Admin 😏</h1>
+
+<input
+type="text"
+id="productName"
+placeholder="Product Name"
+>
+
+<input
+type="text"
+id="productPrice"
+placeholder="Product Price"
+>
+
+<input
+type="text"
+id="productImage"
+placeholder="Image File Name"
+>
+
+<button onclick="saveProduct()">
+Save Product
+</button>
+
+</div>
+
+<script>
+
+function saveProduct(){
+
+  let product = {
+
+    name:
+    document.getElementById(
+      "productName"
+    ).value,
+
+    price:
+    document.getElementById(
+      "productPrice"
+    ).value,
+
+    image:
+    document.getElementById(
+      "productImage"
+    ).value
+
+  };
+
+  localStorage.setItem(
+    "adminProduct",
+    JSON.stringify(product)
+  );
+
+  alert("Product Saved 😏");
+
+}
+
+</script>
+
+</body>
+</html> 
