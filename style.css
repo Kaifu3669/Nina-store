@@ -94,3 +94,6 @@ button:hover{
   background:#1e1e1e;
   color:white;
 }
+img{
+  loading:lazy;
+} 
