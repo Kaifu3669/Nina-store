@@ -27,7 +27,9 @@ header p{
   padding:40px;
 }
 
-.card{
+.card{opacity:0;
+transform:translateY(30px);
+animation:fadeUp 0.8s forwards;
   background:#1b1b1b;
   width:320px;
   border-radius:24px;
@@ -61,7 +63,7 @@ header p{
   text-decoration:none;
 }
 
-button{
+button{transition:0.3s;
   width:calc(100% - 40px);
   margin:20px;
   padding:14px;
@@ -76,6 +78,9 @@ button{
 }
 
 button:hover{
+  background:#ddd;
+  transform:scale(1.03);
+} 
   background:#ddd;
 }
 .navbar{
@@ -121,4 +126,12 @@ footer p{
 
 .socials a:hover{
   color:#bbb;
+} 
+@keyframes fadeUp{
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
 } 
