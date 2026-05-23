@@ -86,11 +86,62 @@ After payment, enter your UTR number to confirm your order.
   
 <img src="qr.jpg" alt="QR Code">
 
-<button type="submit">Submit Order</button>
+<button
+type="submit"
+onclick="trackOrder()"
+>
+Submit Order
+</button> 
 
 </form>
 
 </div>
+<script>
 
+function trackOrder(){
+
+  let orders =
+  JSON.parse(
+    localStorage.getItem(
+      "orderHistory"
+    )
+  ) || [];
+
+  let newOrder = {
+
+    product:
+    "Sennheiser AMBEO SMART HEADSET",
+
+    time:
+    new Date().toLocaleString()
+
+  };
+
+  orders.push(newOrder);
+
+  localStorage.setItem(
+    "orderHistory",
+    JSON.stringify(orders)
+  );
+
+  let totalOrders =
+  localStorage.getItem(
+    "orders"
+  );
+
+  if(!totalOrders){
+    totalOrders = 0;
+  }
+
+  totalOrders++;
+
+  localStorage.setItem(
+    "orders",
+    totalOrders
+  );
+
+}
+
+</script> 
 </body>
 </html>
