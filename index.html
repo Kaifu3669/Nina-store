@@ -90,6 +90,38 @@ function addToCart2(){
   window.location.href = "cart.html";
 
 } 
+function searchProducts(){
+
+  let input =
+  document.getElementById(
+    "searchInput"
+  ).value.toLowerCase();
+
+  let cards =
+  document.getElementsByClassName(
+    "card"
+  );
+
+  for(let i=0;i<cards.length;i++){
+
+    let title =
+    cards[i]
+    .getElementsByTagName(
+      "h2"
+    )[0];
+
+    let text =
+    title.innerText.toLowerCase();
+
+    if(text.includes(input)){
+      cards[i].style.display="block";
+    }else{
+      cards[i].style.display="none";
+    }
+
+  }
+
+} 
 </script> 
   
 </body>
