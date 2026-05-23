@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Cart</title>
+
+<style>
+
+body{
+  background:#111;
+  color:white;
+  font-family:Arial;
+  padding:20px;
+}
+
+.box{
+  max-width:400px;
+  margin:auto;
+  background:#1e1e1e;
+  padding:20px;
+  border-radius:20px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  margin-top:20px;
+  border:none;
+  border-radius:10px;
+  background:white;
+  color:black;
+  font-weight:bold;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="box">
+
+<h1>Your Cart</h1>
+
+<h2 id="productName"></h2>
+
+<p id="productPrice"></p>
+
+<a href="checkout.html">
+<button>
+Proceed To Checkout
+</button>
+</a>
+
+</div>
+
+<script>
+
+let cart =
+JSON.parse(localStorage.getItem("cart"));
+
+document.getElementById(
+"productName"
+).innerText = cart.name;
+
+document.getElementById(
+"productPrice"
+).innerText = cart.price;
+
+</script>
+
+</body>
+</html>
