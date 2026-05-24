@@ -68,16 +68,6 @@ header p{
 
   animation:fadeUp 0.8s forwards;
 }
-opacity:0;
-transform:translateY(30px);
-animation:fadeUp 0.8s forwards;
-  background:#1b1b1b;
-  width:320px;
-  border-radius:24px;
-  overflow:hidden;
-  transition:0.3s;
-  box-shadow:0 0 20px rgba(0,0,0,0.4);
-}
 
 .card:hover{
   transform:translateY(-8px);
