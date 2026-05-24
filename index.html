@@ -25,16 +25,6 @@ name="description"
 content="Buy premium audio products and accessories at Nina Store."
 >
 
-<meta
-name="keywords"
-content="headphones, earbuds, premium audio, nina store"
->
-
-<meta
-name="author"
-content="Nina Store"
->
-
 <link
 rel="preconnect"
 href="https://fonts.googleapis.com"
@@ -67,11 +57,7 @@ href="style.css"
 <!-- LOADER -->
 
 <div id="loader">
-
-<h1>
-NINA
-</h1>
-
+<h1>NINA</h1>
 </div>
 
 <!-- HERO -->
@@ -87,16 +73,13 @@ Feel Sound Differently
 </h1>
 
 <p>
-Premium audio experience
-with luxury aesthetics.
+Premium audio experience with luxury aesthetics.
 </p>
 
 <a href="#products">
-
 <button>
 Explore Products
 </button>
-
 </a>
 
 </div>
@@ -109,29 +92,12 @@ Explore Products
 
 <div class="tickerTrack">
 
-<span>
-PREMIUM AUDIO ✦
-</span>
-
-<span>
-LUXURY SOUND ✦
-</span>
-
-<span>
-LIMITED COLLECTION ✦
-</span>
-
-<span>
-WIRELESS EXPERIENCE ✦
-</span>
-
-<span>
-PREMIUM AUDIO ✦
-</span>
-
-<span>
-LUXURY SOUND ✦
-</span>
+<span>PREMIUM AUDIO ✦</span>
+<span>LUXURY SOUND ✦</span>
+<span>LIMITED COLLECTION ✦</span>
+<span>WIRELESS EXPERIENCE ✦</span>
+<span>PREMIUM AUDIO ✦</span>
+<span>LUXURY SOUND ✦</span>
 
 </div>
 
@@ -158,7 +124,6 @@ onkeyup="searchProducts()"
 href="cart.html"
 class="cartBtn"
 >
-
 🛒 Cart
 
 <span id="cartCount">
@@ -175,11 +140,63 @@ class="cartBtn"
 
 <main>
 
+<!-- SLIDER SECTION -->
+
+<section class="sliderSection">
+
+<h2 class="sectionTitle">
+Trending Now
+</h2>
+
+<div class="sliderWrap">
+
+<button
+class="slideBtn leftBtn"
+onclick="slideLeft()"
+>
+❮
+</button>
+
+<div class="productSlider" id="productSlider">
+
+<div class="slideCard">
+<img src="headset.jpg">
+<h3>AMBEO Headset</h3>
+</div>
+
+<div class="slideCard">
+<img src="earbuds.jpg">
+<h3>Wireless Earbuds</h3>
+</div>
+
+<div class="slideCard">
+<img src="headset.jpg">
+<h3>Luxury Audio</h3>
+</div>
+
+<div class="slideCard">
+<img src="earbuds.jpg">
+<h3>Premium Bass</h3>
+</div>
+
+</div>
+
+<button
+class="slideBtn rightBtn"
+onclick="slideRight()"
+>
+❯
+</button>
+
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
 <h2 class="sectionTitle">
 Featured Products
 </h2>
-
-<!-- PRODUCTS -->
 
 <section
 class="products"
@@ -205,14 +222,9 @@ Sennheiser AMBEO SMART HEADSET
 </p>
 
 <button
-onclick="
-trackCart();
-addToCart();
-"
+onclick="trackCart(); addToCart();"
 >
-
 Add To Cart
-
 </button>
 
 </div>
@@ -236,14 +248,9 @@ Wireless Earbuds
 </p>
 
 <button
-onclick="
-trackCart();
-addToCart2();
-"
+onclick="trackCart(); addToCart2();"
 >
-
 Add To Cart
-
 </button>
 
 </div>
@@ -298,22 +305,42 @@ onclick="closeCart()"
 </div>
 
 <div id="cartItems">
-
-<p>
-No items added yet.
-</p>
-
+<p>No items added yet.</p>
 </div>
 
 <a href="cart.html">
-
 <button class="checkoutBtn">
 Go To Checkout
 </button>
-
 </a>
 
 </div>
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+const firebaseConfig = {
+
+apiKey: "PASTE_API_KEY",
+
+authDomain: "PASTE_AUTH_DOMAIN",
+
+projectId: "PASTE_PROJECT_ID",
+
+storageBucket: "PASTE_STORAGE_BUCKET",
+
+messagingSenderId: "PASTE_MESSAGING_ID",
+
+appId: "PASTE_APP_ID"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+</script>
 
 <!-- SCRIPT -->
 
@@ -415,11 +442,7 @@ document.getElementsByClassName(
 "card"
 );
 
-for(
-let i=0;
-i<cards.length;
-i++
-){
+for(let i=0;i<cards.length;i++){
 
 let title =
 cards[i]
@@ -428,12 +451,9 @@ cards[i]
 )[0];
 
 let text =
-title.innerText
-.toLowerCase();
+title.innerText.toLowerCase();
 
-if(
-text.includes(input)
-){
+if(text.includes(input)){
 
 cards[i].style.display =
 "block";
@@ -449,101 +469,6 @@ cards[i].style.display =
 
 }
 
-/* ADMIN PRODUCT */
-
-let adminProduct =
-JSON.parse(
-localStorage.getItem(
-"adminProduct"
-)
-);
-
-if(adminProduct){
-
-let products =
-document.querySelector(
-".products"
-);
-
-products.innerHTML += `
-
-<div class="card reveal">
-
-<img
-src="${adminProduct.image}"
-alt="${adminProduct.name}"
-loading="lazy"
->
-
-<h2>
-${adminProduct.name}
-</h2>
-
-<p>
-${adminProduct.price}
-</p>
-
-<button
-onclick="
-trackCart();
-addDynamicProduct(
-'${adminProduct.name}',
-'${adminProduct.price}',
-'${adminProduct.image}'
-);
-"
->
-
-Add To Cart
-
-</button>
-
-</div>
-
-`;
-
-}
-
-/* DYNAMIC PRODUCT */
-
-function addDynamicProduct(
-name,
-price,
-image
-){
-
-let product = {
-
-name:name,
-price:price,
-image:image
-
-};
-
-let cart =
-JSON.parse(
-localStorage.getItem(
-"cart"
-)
-) || [];
-
-cart.push(product);
-
-localStorage.setItem(
-"cart",
-JSON.stringify(cart)
-);
-
-updateCartCount();
-
-alert(
-"Product Added To Cart 😏"
-);
-
-openCart();
-
-}
-
 /* VISITS */
 
 let visits =
@@ -552,9 +477,7 @@ localStorage.getItem(
 );
 
 if(!visits){
-
 visits = 0;
-
 }
 
 visits++;
@@ -574,9 +497,7 @@ localStorage.getItem(
 );
 
 if(!cartClicks){
-
 cartClicks = 0;
-
 }
 
 cartClicks++;
@@ -588,7 +509,7 @@ cartClicks
 
 }
 
-/* CUSTOM CURSOR */
+/* CURSOR */
 
 const cursor =
 document.querySelector(
@@ -607,7 +528,7 @@ e.clientY + "px";
 
 });
 
-/* SCROLL REVEAL */
+/* REVEAL */
 
 const reveals =
 document.querySelectorAll(
@@ -626,10 +547,7 @@ reveals.forEach((el)=>{
 const top =
 el.getBoundingClientRect().top;
 
-if(
-top <
-window.innerHeight - 100
-){
+if(top < window.innerHeight - 100){
 
 el.classList.add(
 "active"
@@ -665,11 +583,7 @@ if(cart.length === 0){
 document.getElementById(
 "cartItems"
 ).innerHTML = `
-
-<p>
-No items added yet.
-</p>
-
+<p>No items added yet.</p>
 `;
 
 return;
@@ -684,9 +598,7 @@ itemsHTML += `
 
 <div class="drawerItem">
 
-<img
-src="${item.image}"
->
+<img src="${item.image}">
 
 <h3>
 ${item.name}
@@ -697,19 +609,10 @@ ${item.price}
 </p>
 
 <button
-onclick="
-removeDrawerItem(
-${index}
-)
-"
-style="
-margin-top:10px;
-width:100%;
-"
+onclick="removeDrawerItem(${index})"
+style="margin-top:10px;width:100%;"
 >
-
 Remove
-
 </button>
 
 </div>
@@ -720,8 +623,7 @@ Remove
 
 document.getElementById(
 "cartItems"
-).innerHTML =
-itemsHTML;
+).innerHTML = itemsHTML;
 
 }
 
@@ -781,8 +683,35 @@ cart.length;
 
 updateCartCount();
 
+/* SLIDER */
+
+function slideLeft(){
+
+document.getElementById(
+"productSlider"
+).scrollBy({
+
+left:-320,
+behavior:"smooth"
+
+});
+
+}
+
+function slideRight(){
+
+document.getElementById(
+"productSlider"
+).scrollBy({
+
+left:320,
+behavior:"smooth"
+
+});
+
+}
+
 </script>
 
 </body>
-
 </html>
