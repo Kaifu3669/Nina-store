@@ -1,77 +1,556 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
-<title>Cart</title>
+<title>
+Cart | Nina Store
+</title>
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com"
+>
+
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin
+>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet"
+>
 
 <style>
 
 body{
-  background:#111;
+
+  margin:0;
+
+  background:
+  linear-gradient(
+    135deg,
+    #0f0f0f,
+    #1a1a1a,
+    #111
+  );
+
   color:white;
-  font-family:Arial;
+
+  font-family:'Poppins',sans-serif;
+
+  min-height:100vh;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
   padding:20px;
+
 }
 
-.box{
-  max-width:400px;
-  margin:auto;
-  background:#1e1e1e;
-  padding:20px;
-  border-radius:20px;
-}
+.cartBox{
 
-button{
   width:100%;
-  padding:14px;
+
+  max-width:500px;
+
+  background:
+  rgba(255,255,255,0.05);
+
+  backdrop-filter:blur(20px);
+
+  border:
+  1px solid rgba(
+    255,255,255,0.08
+  );
+
+  border-radius:28px;
+
+  padding:30px;
+
+  box-sizing:border-box;
+
+  box-shadow:
+  0 20px 60px rgba(
+    0,0,0,0.5
+  );
+
+}
+
+h1{
+
+  margin-top:0;
+
+  font-size:42px;
+
+  text-align:center;
+
+}
+
+.product{
+
+  background:#181818;
+
+  border-radius:22px;
+
+  overflow:hidden;
+
   margin-top:20px;
+
+}
+
+.product img{
+
+  width:100%;
+
+  height:260px;
+
+  object-fit:contain;
+
+  background:#111;
+
+  padding:20px;
+
+  box-sizing:border-box;
+
+}
+
+.info{
+
+  padding:20px;
+
+}
+
+.info h2{
+
+  margin:0 0 10px;
+
+  font-size:24px;
+
+}
+
+.price{
+
+  color:#bbb;
+
+  font-size:18px;
+
+  margin-bottom:20px;
+
+}
+
+.qtyBox{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+
+  margin-bottom:25px;
+
+}
+
+.qtyBtn{
+
+  width:42px;
+
+  height:42px;
+
   border:none;
-  border-radius:10px;
+
+  border-radius:12px;
+
   background:white;
+
   color:black;
-  font-weight:bold;
+
+  font-size:20px;
+
+  cursor:pointer;
+
+}
+
+.qty{
+
+  font-size:20px;
+
+  min-width:30px;
+
+  text-align:center;
+
+}
+
+.total{
+
+  font-size:22px;
+
+  margin-bottom:25px;
+
+}
+
+.actions{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:15px;
+
+}
+
+.actions button,
+.actions a{
+
+  width:100%;
+
+  text-align:center;
+
+  text-decoration:none;
+
+  border:none;
+
+  background:white;
+
+  color:black;
+
+  padding:15px;
+
+  border-radius:16px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:0.3s;
+
+  box-sizing:border-box;
+
+}
+
+.actions button:hover,
+.actions a:hover{
+
+  transform:
+  translateY(-2px);
+
+}
+
+.removeBtn{
+
+  background:#1f1f1f !important;
+
+  color:white !important;
+
+}
+
+.trust{
+
+  margin-top:25px;
+
+  color:#999;
+
+  line-height:1.8;
+
+  font-size:14px;
+
+  text-align:center;
+
+}
+
+.empty{
+
+  text-align:center;
+
+  padding:40px 20px;
+
+}
+
+.empty h2{
+
+  font-size:32px;
+
+}
+
+.empty p{
+
+  color:#999;
+
+}
+
+.shopBtn{
+
+  display:inline-block;
+
+  margin-top:20px;
+
+  text-decoration:none;
+
+  background:white;
+
+  color:black;
+
+  padding:14px 24px;
+
+  border-radius:14px;
+
+  font-weight:600;
+
+}
+
+@media(max-width:768px){
+
+h1{
+
+  font-size:34px;
+
+}
+
+.product img{
+
+  height:220px;
+
+}
+
 }
 
 </style>
 
 </head>
+
 <body>
 
-<div class="box">
+<div class="cartBox">
 
-<h1>Your Cart</h1>
+<h1>
+Your Cart
+</h1>
 
-<h2 id="productName"></h2>
+<div id="cartContent">
 
-<p id="productPrice"></p>
-
-<a href="checkout.html">
-<button>
-Proceed To Checkout
-</button>
-</a>
+</div>
 
 </div>
 
 <script>
 
+/* GET CART */
+
 let cart =
-JSON.parse(localStorage.getItem("cart"));
+JSON.parse(
+localStorage.getItem(
+"cart"
+)
+);
+
+/* EMPTY CART */
+
+if(!cart){
 
 document.getElementById(
-"productName"
-).innerText = cart.name;
+"cartContent"
+).innerHTML = `
+
+<div class="empty">
+
+<h2>
+Cart Is Empty 😔
+</h2>
+
+<p>
+Looks like you haven't
+added anything yet.
+</p>
+
+<a
+href="index.html"
+class="shopBtn"
+>
+Continue Shopping
+</a>
+
+</div>
+
+`;
+
+}else{
+
+/* DEFAULT IMAGE */
+
+let image =
+"headset.jpg";
+
+if(
+cart.name ===
+"Wireless Earbuds"
+){
+
+image = "earbuds.jpg";
+
+}
+
+/* QUANTITY */
+
+let quantity = 1;
+
+/* PRICE CLEAN */
+
+let cleanPrice =
+parseInt(
+cart.price.replace(
+/[^0-9]/g,
+""
+)
+);
+
+/* RENDER */
+
+function renderCart(){
+
+let total =
+cleanPrice * quantity;
 
 document.getElementById(
-"productPrice"
-).innerText = cart.price;
+"cartContent"
+).innerHTML = `
+
+<div class="product">
+
+<img
+src="${image}"
+alt="${cart.name}"
+>
+
+<div class="info">
+
+<h2>
+${cart.name}
+</h2>
+
+<p class="price">
+${cart.price}
+</p>
+
+<div class="qtyBox">
+
+<button
+class="qtyBtn"
+onclick="decreaseQty()"
+>
+−
+</button>
+
+<div class="qty">
+${quantity}
+</div>
+
+<button
+class="qtyBtn"
+onclick="increaseQty()"
+>
++
+</button>
+
+</div>
+
+<div class="total">
+
+Total:
+₹${total.toLocaleString()}
+
+</div>
+
+<div class="actions">
+
+<a href="checkout.html">
+
+Proceed To Checkout
+
+</a>
+
+<button
+class="removeBtn"
+onclick="removeCart()"
+>
+
+Remove Product
+
+</button>
+
+</div>
+
+<div class="trust">
+
+✔ Secure Checkout<br>
+
+✔ Fast Delivery<br>
+
+✔ Premium Packaging
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+renderCart();
+
+/* INCREASE */
+
+function increaseQty(){
+
+quantity++;
+
+renderCart();
+
+}
+
+/* DECREASE */
+
+function decreaseQty(){
+
+if(quantity > 1){
+
+quantity--;
+
+renderCart();
+
+}
+
+}
+
+/* REMOVE */
+
+function removeCart(){
+
+localStorage.removeItem(
+"cart"
+);
+
+location.reload();
+
+}
+
+}
 
 </script>
 
 </body>
+
 </html>
