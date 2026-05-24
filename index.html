@@ -67,11 +67,12 @@ href="style.css"
 <div class="heroContent">
 
 <h1>
-PLAY RIDE & VIBE SLEEVE
+Feel Sound Differently
 </h1>
 
 <p>
-PLEASURE JUST GOT AN UPGRADE
+Premium audio experience
+with luxury aesthetics.
 </p>
 
 <a href="#products">
@@ -107,19 +108,22 @@ onkeyup="searchProducts()"
 
 </header>
 
-<!-- SECTION TITLE -->
+<!-- MAIN -->
 
 <main>
+
+<!-- SECTION TITLE -->
 
 <h2 class="sectionTitle">
 Featured Products
 </h2>
 
+<!-- PRODUCTS -->
+
 <section
 class="products"
 id="products"
 >
-
 
 <!-- PRODUCT 1 -->
 
@@ -139,7 +143,12 @@ Sennheiser AMBEO SMART HEADSET
 ₹20,000
 </p>
 
-<button onclick="addToCart()">
+<button
+onclick="
+trackCart();
+addToCart();
+"
+>
 Add To Cart
 </button>
 
@@ -163,7 +172,12 @@ Wireless Earbuds
 ₹4,999
 </p>
 
-<button onclick="addToCart2()">
+<button
+onclick="
+trackCart();
+addToCart2();
+"
+>
 Add To Cart
 </button>
 
@@ -341,7 +355,7 @@ if(adminProduct){
   ${adminProduct.price}
   </p>
 
-  <button>
+  <button onclick="addToCart()">
   Add To Cart
   </button>
 
@@ -371,7 +385,7 @@ localStorage.setItem(
   visits
 );
 
-/* CART CLICKS */
+/* CART TRACKING */
 
 function trackCart(){
 
