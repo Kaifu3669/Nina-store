@@ -10,6 +10,7 @@ body{
   );
   color:white;
   overflow-x:hidden;
+  cursor:none;
 }
 
 html{
@@ -21,6 +22,36 @@ html{
 main{
   max-width:1400px;
   margin:auto;
+}
+
+/* CUSTOM CURSOR */
+
+.cursor{
+
+  width:22px;
+  height:22px;
+
+  border:
+  2px solid white;
+
+  border-radius:50%;
+
+  position:fixed;
+
+  transform:
+  translate(-50%,-50%);
+
+  pointer-events:none;
+
+  z-index:999999;
+
+  transition:
+  transform 0.08s linear;
+
+  backdrop-filter:blur(2px);
+
+  mix-blend-mode:difference;
+
 }
 
 /* LOADER */
@@ -468,6 +499,14 @@ header h1{
 
   box-sizing:border-box;
 
+  transition:0.4s;
+
+}
+
+.card:hover img{
+
+  transform:scale(1.06);
+
 }
 
 .card h2{
@@ -525,6 +564,29 @@ button:hover{
   0 10px 30px rgba(
     255,255,255,0.2
   );
+
+}
+
+/* SCROLL REVEAL */
+
+.reveal{
+
+  opacity:0;
+
+  transform:
+  translateY(60px);
+
+  transition:
+  all 1s ease;
+
+}
+
+.reveal.active{
+
+  opacity:1;
+
+  transform:
+  translateY(0);
 
 }
 
@@ -637,6 +699,14 @@ footer p{
 /* MOBILE */
 
 @media(max-width:768px){
+
+body{
+  cursor:auto;
+}
+
+.cursor{
+  display:none;
+}
 
 .hero{
 
