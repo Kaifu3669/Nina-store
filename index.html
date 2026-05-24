@@ -60,9 +60,21 @@ href="style.css"
 
 <body>
 
+<!-- LOADER -->
+
+<div id="loader">
+
+<h1>
+NINA
+</h1>
+
+</div>
+
 <!-- HERO -->
 
 <section class="hero">
+
+<div class="particles"></div>
 
 <div class="heroContent">
 
@@ -87,6 +99,40 @@ Explore Products
 
 </section>
 
+<!-- SLIDING BANNER -->
+
+<div class="ticker">
+
+<div class="tickerTrack">
+
+<span>
+PREMIUM AUDIO ✦
+</span>
+
+<span>
+LUXURY SOUND ✦
+</span>
+
+<span>
+LIMITED COLLECTION ✦
+</span>
+
+<span>
+WIRELESS EXPERIENCE ✦
+</span>
+
+<span>
+PREMIUM AUDIO ✦
+</span>
+
+<span>
+LUXURY SOUND ✦
+</span>
+
+</div>
+
+</div>
+
 <!-- NAVBAR -->
 
 <header>
@@ -103,6 +149,13 @@ id="searchInput"
 placeholder="Search products..."
 onkeyup="searchProducts()"
 />
+
+<a
+href="cart.html"
+class="cartBtn"
+>
+🛒 Cart
+</a>
 
 </nav>
 
@@ -355,7 +408,12 @@ if(adminProduct){
   ${adminProduct.price}
   </p>
 
-  <button onclick="addToCart()">
+  <button
+  onclick="
+  trackCart();
+  addToCart();
+  "
+  >
   Add To Cart
   </button>
 
