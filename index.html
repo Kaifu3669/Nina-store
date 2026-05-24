@@ -793,19 +793,60 @@ console.log(
 const db =
 getFirestore(app);
 
-window.db = db;
+/* LOAD FIREBASE PRODUCTS */
 
-window.collection = collection;
+async function loadProducts(){
 
-window.addDoc = addDoc;
+const querySnapshot =
+await getDocs(
+collection(db,"products")
+);
 
-window.getDocs = getDocs;
+querySnapshot.forEach((docItem)=>{
 
-window.deleteDoc = deleteDoc;
+const product =
+docItem.data();
 
-window.doc = doc;
+document.getElementById(
+"products"
+).innerHTML += `
+
+<div class="card reveal">
+
+<img
+src="${product.image}"
+alt="${product.name}"
+loading="lazy"
+/>
+
+<h2>
+${product.name}
+</h2>
+
+<p>
+${product.price}
+</p>
+
+<button onclick="
+addDynamicCart(
+'${product.name}',
+'${product.price}',
+'${product.image}'
+)
+">
+Add To Cart
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+loadProducts();
 
 </script>
-
 </body>
 </html>
