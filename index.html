@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<head>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Nina Store | Premium Audio Products</title>
+<meta charset="UTF-8" />
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+/>
+
+<title>
+Nina Store | Premium Audio Products
+</title>
+
 <link
 rel="icon"
 type="image/png"
 href="favicon.png"
-> 
+/>
+
 <meta
 name="description"
 content="Buy premium audio products and accessories at Nina Store."
@@ -26,10 +33,35 @@ content="headphones, earbuds, premium audio, nina store"
 <meta
 name="author"
 content="Nina Store"
-> 
-  <link rel="stylesheet" href="style.css" />
+>
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com"
+>
+
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin
+>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet"
+>
+
+<link
+rel="stylesheet"
+href="style.css"
+/>
+
 </head>
+
 <body>
+
+<!-- HERO -->
+
 <section class="hero">
 
 <div class="heroContent">
@@ -44,19 +76,26 @@ with luxury aesthetics.
 </p>
 
 <a href="#products">
+
 <button>
 Explore Products
 </button>
+
 </a>
 
 </div>
 
 </section>
-  <header>
+
+<!-- NAVBAR -->
+
+<header>
 
 <nav class="navbar">
 
-<h1>Nina Store</h1>
+<h1>
+Nina Store
+</h1>
 
 <input
 type="text"
@@ -67,52 +106,113 @@ onkeyup="searchProducts()"
 
 </nav>
 
-<p>Soft aesthetic products</p>
+</header>
 
-  </header> 
+<!-- SECTION TITLE -->
 
-  <section class="products" id="products">
+<h2 class="sectionTitle">
+Featured Products
+</h2>
 
-    <div class="card">
-  <img
+<!-- PRODUCTS -->
+
+<section
+class="products"
+id="products"
+>
+
+<!-- PRODUCT 1 -->
+
+<div class="card">
+
+<img
 src="headset.jpg"
 alt="Sennheiser AMBEO SMART HEADSET"
 loading="lazy"
-> 
+/>
 
-  <h2>Sennheiser AMBEO SMART HEADSET</h2>
+<h2>
+Sennheiser AMBEO SMART HEADSET
+</h2>
 
-  <p>₹20,000</p>
+<p>
+₹20,000
+</p>
 
 <button onclick="addToCart()">
-  Add To Cart
+Add To Cart
 </button>
-    </div>
+
+</div>
+
+<!-- PRODUCT 2 -->
+
 <div class="card">
 
 <img
 src="earbuds.jpg"
 alt="Wireless Earbuds"
 loading="lazy"
-> 
+/>
 
-  <h2>Wireless Earbuds</h2>
+<h2>
+Wireless Earbuds
+</h2>
 
-  <p>₹4,999</p>
+<p>
+₹4,999
+</p>
 
-  <button onclick="addToCart2()">
-    Add To Cart
-  </button>
+<button onclick="addToCart2()">
+Add To Cart
+</button>
 
-</div> 
-  </section>
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 Nina Store — All Rights Reserved
+</p>
+
+<div class="socials">
+
+<a href="#">
+Instagram
+</a>
+
+<a href="#">
+Telegram
+</a>
+
+<a href="#">
+Contact
+</a>
+
+</div>
+
+</footer>
+
+<!-- SCRIPT -->
+
 <script>
+
+/* PRODUCT 1 */
 
 function addToCart(){
 
   let product = {
-    name:"Sennheiser AMBEO SMART HEADSET",
-    price:"₹20,000"
+
+    name:
+    "Sennheiser AMBEO SMART HEADSET",
+
+    price:
+    "₹20,000"
+
   };
 
   localStorage.setItem(
@@ -120,16 +220,27 @@ function addToCart(){
     JSON.stringify(product)
   );
 
-  alert("Product Added To Cart 😏");
+  alert(
+    "Product Added To Cart 😏"
+  );
 
-  window.location.href = "cart.html";
+  window.location.href =
+  "cart.html";
 
 }
+
+/* PRODUCT 2 */
+
 function addToCart2(){
 
   let product = {
-    name:"Wireless Earbuds",
-    price:"₹4,999"
+
+    name:
+    "Wireless Earbuds",
+
+    price:
+    "₹4,999"
+
   };
 
   localStorage.setItem(
@@ -137,11 +248,17 @@ function addToCart2(){
     JSON.stringify(product)
   );
 
-  alert("Product Added To Cart 😏");
+  alert(
+    "Product Added To Cart 😏"
+  );
 
-  window.location.href = "cart.html";
+  window.location.href =
+  "cart.html";
 
-} 
+}
+
+/* SEARCH */
+
 function searchProducts(){
 
   let input =
@@ -154,7 +271,11 @@ function searchProducts(){
     "card"
   );
 
-  for(let i=0;i<cards.length;i++){
+  for(
+    let i=0;
+    i<cards.length;
+    i++
+  ){
 
     let title =
     cards[i]
@@ -163,22 +284,35 @@ function searchProducts(){
     )[0];
 
     let text =
-    title.innerText.toLowerCase();
+    title.innerText
+    .toLowerCase();
 
-    if(text.includes(input)){
-      cards[i].style.display="block";
+    if(
+      text.includes(input)
+    ){
+
+      cards[i].style.display =
+      "block";
+
     }else{
-      cards[i].style.display="none";
+
+      cards[i].style.display =
+      "none";
+
     }
 
   }
 
-} 
+}
+
+/* ADMIN PRODUCT */
+
 let adminProduct =
 JSON.parse(
-localStorage.getItem(
-"adminProduct"
-));
+  localStorage.getItem(
+    "adminProduct"
+  )
+);
 
 if(adminProduct){
 
@@ -213,27 +347,54 @@ if(adminProduct){
 
   `;
 
-} 
-</script> 
-  <footer>
+}
 
-<p>
-© 2026 Nina Store — All Rights Reserved
-</p>
+/* VISITS */
 
-<div class="socials">
+let visits =
+localStorage.getItem(
+  "visits"
+);
 
-<a href="#">
-Instagram</a>
+if(!visits){
 
-<a href="#">
-Telegram</a>
+  visits = 0;
 
-<a href="#">
-Contact</a>
+}
 
-</div>
+visits++;
 
-  </footer> 
+localStorage.setItem(
+  "visits",
+  visits
+);
+
+/* CART CLICKS */
+
+function trackCart(){
+
+  let cartClicks =
+  localStorage.getItem(
+    "cartClicks"
+  );
+
+  if(!cartClicks){
+
+    cartClicks = 0;
+
+  }
+
+  cartClicks++;
+
+  localStorage.setItem(
+    "cartClicks",
+    cartClicks
+  );
+
+}
+
+</script>
+
 </body>
+
 </html>
