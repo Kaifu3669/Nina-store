@@ -61,16 +61,13 @@ img{
 
 <h1>Checkout</h1>
 
-<form
-action="https://formsubmit.co/luxstoree@proton.me"
-method="POST"
->
-
-<input
-type="hidden"
-name="_next"
-value="https://nina-store-two.vercel.app/success.html"
->
+<form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="5d88181d-b93d-406d-821a-163c2bc4a0c8">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required></textarea>
+  <button type="submit">Submit</button>
+</form>
 
 <input
 type="text"
