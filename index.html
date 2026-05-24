@@ -60,6 +60,10 @@ href="style.css"
 
 <body>
 
+<!-- CUSTOM CURSOR -->
+
+<div class="cursor"></div>
+
 <!-- LOADER -->
 
 <div id="loader">
@@ -180,7 +184,7 @@ id="products"
 
 <!-- PRODUCT 1 -->
 
-<div class="card">
+<div class="card reveal">
 
 <img
 src="headset.jpg"
@@ -209,7 +213,7 @@ Add To Cart
 
 <!-- PRODUCT 2 -->
 
-<div class="card">
+<div class="card reveal">
 
 <img
 src="earbuds.jpg"
@@ -392,7 +396,7 @@ if(adminProduct){
 
   products.innerHTML += `
 
-  <div class="card">
+  <div class="card reveal">
 
   <img
   src="${adminProduct.image}"
@@ -466,6 +470,58 @@ function trackCart(){
   );
 
 }
+
+/* CUSTOM CURSOR */
+
+const cursor =
+document.querySelector(
+".cursor"
+);
+
+document.addEventListener(
+"mousemove",
+(e)=>{
+
+cursor.style.left =
+e.clientX + "px";
+
+cursor.style.top =
+e.clientY + "px";
+
+});
+
+/* SCROLL REVEAL */
+
+const reveals =
+document.querySelectorAll(
+".reveal"
+);
+
+window.addEventListener(
+"scroll",
+revealElements
+);
+
+function revealElements(){
+
+  reveals.forEach((el)=>{
+
+    const top =
+    el.getBoundingClientRect().top;
+
+    if(top < window.innerHeight - 100){
+
+      el.classList.add(
+        "active"
+      );
+
+    }
+
+  });
+
+}
+
+revealElements();
 
 </script>
 
