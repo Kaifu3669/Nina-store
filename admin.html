@@ -103,6 +103,10 @@ placeholder="Image File Name"
 Save Product
 </button>
 
+<button onclick="deleteProduct()">
+Delete Product
+</button>
+
 <hr style="margin:30px 0; border-color:#333;">
 
 <h2>Analytics Dashboard 📊</h2>
@@ -199,7 +203,17 @@ document.getElementById(
 "orderData"
 ).innerText =
 totalOrders || 0;
+function deleteProduct(){
 
+  localStorage.removeItem(
+    "adminProduct"
+  );
+
+  alert("Product Deleted 😏");
+
+  location.reload();
+
+} 
 </script>
 
 </body>
