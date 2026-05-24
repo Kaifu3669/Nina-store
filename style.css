@@ -433,3 +433,19 @@ header{
 }
 
 }
+.hero button{
+
+  padding:16px 34px;
+
+  font-size:16px;
+
+  border-radius:18px;
+
+  background:
+  linear-gradient(
+    135deg,
+    white,
+    #dcdcdc
+  );
+
+}
