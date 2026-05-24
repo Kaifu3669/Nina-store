@@ -77,9 +77,11 @@ Premium audio experience with luxury aesthetics.
 </p>
 
 <a href="#products">
+
 <button>
 Explore Products
 </button>
+
 </a>
 
 </div>
@@ -124,6 +126,7 @@ onkeyup="searchProducts()"
 href="cart.html"
 class="cartBtn"
 >
+
 🛒 Cart
 
 <span id="cartCount">
@@ -140,7 +143,7 @@ class="cartBtn"
 
 <main>
 
-<!-- SLIDER SECTION -->
+<!-- SLIDER -->
 
 <section class="sliderSection">
 
@@ -157,26 +160,49 @@ onclick="slideLeft()"
 ❮
 </button>
 
-<div class="productSlider" id="productSlider">
+<div
+class="productSlider"
+id="productSlider"
+>
 
 <div class="slideCard">
+
 <img src="headset.jpg">
-<h3>AMBEO Headset</h3>
+
+<h3>
+AMBEO Headset
+</h3>
+
 </div>
 
 <div class="slideCard">
+
 <img src="earbuds.jpg">
-<h3>Wireless Earbuds</h3>
+
+<h3>
+Wireless Earbuds
+</h3>
+
 </div>
 
 <div class="slideCard">
+
 <img src="headset.jpg">
-<h3>Luxury Audio</h3>
+
+<h3>
+Luxury Audio
+</h3>
+
 </div>
 
 <div class="slideCard">
+
 <img src="earbuds.jpg">
-<h3>Premium Bass</h3>
+
+<h3>
+Premium Bass
+</h3>
+
 </div>
 
 </div>
@@ -305,44 +331,24 @@ onclick="closeCart()"
 </div>
 
 <div id="cartItems">
-<p>No items added yet.</p>
+
+<p>
+No items added yet.
+</p>
+
 </div>
 
 <a href="cart.html">
+
 <button class="checkoutBtn">
 Go To Checkout
 </button>
+
 </a>
 
 </div>
 
-<!-- FIREBASE -->
-
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-const firebaseConfig = {
-
-apiKey: "PASTE_API_KEY",
-
-authDomain: "PASTE_AUTH_DOMAIN",
-
-projectId: "PASTE_PROJECT_ID",
-
-storageBucket: "PASTE_STORAGE_BUCKET",
-
-messagingSenderId: "PASTE_MESSAGING_ID",
-
-appId: "PASTE_APP_ID"
-
-};
-
-const app = initializeApp(firebaseConfig);
-
-</script>
-
-<!-- SCRIPT -->
+<!-- MAIN SCRIPT -->
 
 <script>
 
@@ -477,7 +483,9 @@ localStorage.getItem(
 );
 
 if(!visits){
+
 visits = 0;
+
 }
 
 visits++;
@@ -487,7 +495,7 @@ localStorage.setItem(
 visits
 );
 
-/* CART TRACKING */
+/* TRACK CART */
 
 function trackCart(){
 
@@ -497,7 +505,9 @@ localStorage.getItem(
 );
 
 if(!cartClicks){
+
 cartClicks = 0;
+
 }
 
 cartClicks++;
@@ -623,7 +633,8 @@ Remove
 
 document.getElementById(
 "cartItems"
-).innerHTML = itemsHTML;
+).innerHTML =
+itemsHTML;
 
 }
 
@@ -710,6 +721,89 @@ behavior:"smooth"
 });
 
 }
+
+</script>
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import { getAnalytics }
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
+
+import {
+
+getFirestore,
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+doc
+
+}
+
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey:
+"AIzaSyDRwKRMybVwuEw6BKtnI98RBfy3eso8to8",
+
+authDomain:
+"nina-store-866c1.firebaseapp.com",
+
+projectId:
+"nina-store-866c1",
+
+storageBucket:
+"nina-store-866c1.firebasestorage.app",
+
+messagingSenderId:
+"113091256345",
+
+appId:
+"1:113091256345:web:dae299919cfd342e318a88",
+
+measurementId:
+"G-DH7TNBL6KG"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+let analytics;
+
+try{
+
+analytics =
+getAnalytics(app);
+
+}catch(error){
+
+console.log(
+"Analytics not supported"
+);
+
+}
+
+const db =
+getFirestore(app);
+
+window.db = db;
+
+window.collection = collection;
+
+window.addDoc = addDoc;
+
+window.getDocs = getDocs;
+
+window.deleteDoc = deleteDoc;
+
+window.doc = doc;
 
 </script>
 
