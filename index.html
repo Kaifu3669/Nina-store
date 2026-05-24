@@ -49,7 +49,7 @@ crossorigin
 <link
 href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
 rel="stylesheet"
-/>
+>
 
 <link
 rel="stylesheet"
@@ -107,3 +107,294 @@ onkeyup="searchProducts()"
 </nav>
 
 </header>
+
+<!-- SECTION TITLE -->
+
+<h2 class="sectionTitle">
+Featured Products
+</h2>
+
+<!-- PRODUCTS -->
+
+<section
+class="products"
+id="products"
+>
+
+<!-- PRODUCT 1 -->
+
+<div class="card">
+
+<img
+src="headset.jpg"
+alt="Sennheiser AMBEO SMART HEADSET"
+loading="lazy"
+/>
+
+<h2>
+Sennheiser AMBEO SMART HEADSET
+</h2>
+
+<p>
+₹20,000
+</p>
+
+<button onclick="addToCart()">
+Add To Cart
+</button>
+
+</div>
+
+<!-- PRODUCT 2 -->
+
+<div class="card">
+
+<img
+src="earbuds.jpg"
+alt="Wireless Earbuds"
+loading="lazy"
+/>
+
+<h2>
+Wireless Earbuds
+</h2>
+
+<p>
+₹4,999
+</p>
+
+<button onclick="addToCart2()">
+Add To Cart
+</button>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 Nina Store — All Rights Reserved
+</p>
+
+<div class="socials">
+
+<a href="#">
+Instagram
+</a>
+
+<a href="#">
+Telegram
+</a>
+
+<a href="#">
+Contact
+</a>
+
+</div>
+
+</footer>
+
+<!-- SCRIPT -->
+
+<script>
+
+/* PRODUCT 1 */
+
+function addToCart(){
+
+  let product = {
+
+    name:
+    "Sennheiser AMBEO SMART HEADSET",
+
+    price:
+    "₹20,000"
+
+  };
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(product)
+  );
+
+  alert(
+    "Product Added To Cart 😏"
+  );
+
+  window.location.href =
+  "cart.html";
+
+}
+
+/* PRODUCT 2 */
+
+function addToCart2(){
+
+  let product = {
+
+    name:
+    "Wireless Earbuds",
+
+    price:
+    "₹4,999"
+
+  };
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(product)
+  );
+
+  alert(
+    "Product Added To Cart 😏"
+  );
+
+  window.location.href =
+  "cart.html";
+
+}
+
+/* SEARCH */
+
+function searchProducts(){
+
+  let input =
+  document.getElementById(
+    "searchInput"
+  ).value.toLowerCase();
+
+  let cards =
+  document.getElementsByClassName(
+    "card"
+  );
+
+  for(
+    let i=0;
+    i<cards.length;
+    i++
+  ){
+
+    let title =
+    cards[i]
+    .getElementsByTagName(
+      "h2"
+    )[0];
+
+    let text =
+    title.innerText
+    .toLowerCase();
+
+    if(
+      text.includes(input)
+    ){
+
+      cards[i].style.display =
+      "block";
+
+    }else{
+
+      cards[i].style.display =
+      "none";
+
+    }
+
+  }
+
+}
+
+/* ADMIN PRODUCT */
+
+let adminProduct =
+JSON.parse(
+  localStorage.getItem(
+    "adminProduct"
+  )
+);
+
+if(adminProduct){
+
+  let products =
+  document.querySelector(
+    ".products"
+  );
+
+  products.innerHTML += `
+
+  <div class="card">
+
+  <img
+  src="${adminProduct.image}"
+  alt="${adminProduct.name}"
+  loading="lazy"
+  >
+
+  <h2>
+  ${adminProduct.name}
+  </h2>
+
+  <p>
+  ${adminProduct.price}
+  </p>
+
+  <button>
+  Add To Cart
+  </button>
+
+  </div>
+
+  `;
+
+}
+
+/* VISITS */
+
+let visits =
+localStorage.getItem(
+  "visits"
+);
+
+if(!visits){
+
+  visits = 0;
+
+}
+
+visits++;
+
+localStorage.setItem(
+  "visits",
+  visits
+);
+
+/* CART CLICKS */
+
+function trackCart(){
+
+  let cartClicks =
+  localStorage.getItem(
+    "cartClicks"
+  );
+
+  if(!cartClicks){
+
+    cartClicks = 0;
+
+  }
+
+  cartClicks++;
+
+  localStorage.setItem(
+    "cartClicks",
+    cartClicks
+  );
+
+}
+
+</script>
+
+</body>
+
+</html>
