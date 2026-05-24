@@ -60,7 +60,7 @@ href="style.css"
 
 <body>
 
-<!-- CUSTOM CURSOR -->
+<!-- CURSOR -->
 
 <div class="cursor"></div>
 
@@ -103,7 +103,7 @@ Explore Products
 
 </section>
 
-<!-- SLIDING BANNER -->
+<!-- TICKER -->
 
 <div class="ticker">
 
@@ -158,7 +158,13 @@ onkeyup="searchProducts()"
 href="cart.html"
 class="cartBtn"
 >
+
 🛒 Cart
+
+<span id="cartCount">
+0
+</span>
+
 </a>
 
 </nav>
@@ -204,7 +210,9 @@ trackCart();
 addToCart();
 "
 >
+
 Add To Cart
+
 </button>
 
 </div>
@@ -233,7 +241,9 @@ trackCart();
 addToCart2();
 "
 >
+
 Add To Cart
+
 </button>
 
 </div>
@@ -313,26 +323,40 @@ Go To Checkout
 
 function addToCart(){
 
-  let product = {
+let product = {
 
-    name:
-    "Sennheiser AMBEO SMART HEADSET",
+name:
+"Sennheiser AMBEO SMART HEADSET",
 
-    price:
-    "₹20,000"
+price:
+"₹20,000",
 
-  };
+image:
+"headset.jpg"
 
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(product)
-  );
+};
 
-  alert(
-    "Product Added To Cart 😏"
-  );
+let cart =
+JSON.parse(
+localStorage.getItem(
+"cart"
+)
+) || [];
 
-  openCart();
+cart.push(product);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+updateCartCount();
+
+alert(
+"Product Added To Cart 😏"
+);
+
+openCart();
 
 }
 
@@ -340,26 +364,40 @@ function addToCart(){
 
 function addToCart2(){
 
-  let product = {
+let product = {
 
-    name:
-    "Wireless Earbuds",
+name:
+"Wireless Earbuds",
 
-    price:
-    "₹4,999"
+price:
+"₹4,999",
 
-  };
+image:
+"earbuds.jpg"
 
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(product)
-  );
+};
 
-  alert(
-    "Product Added To Cart 😏"
-  );
+let cart =
+JSON.parse(
+localStorage.getItem(
+"cart"
+)
+) || [];
 
-  openCart();
+cart.push(product);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+updateCartCount();
+
+alert(
+"Product Added To Cart 😏"
+);
+
+openCart();
 
 }
 
@@ -367,47 +405,47 @@ function addToCart2(){
 
 function searchProducts(){
 
-  let input =
-  document.getElementById(
-    "searchInput"
-  ).value.toLowerCase();
+let input =
+document.getElementById(
+"searchInput"
+).value.toLowerCase();
 
-  let cards =
-  document.getElementsByClassName(
-    "card"
-  );
+let cards =
+document.getElementsByClassName(
+"card"
+);
 
-  for(
-    let i=0;
-    i<cards.length;
-    i++
-  ){
+for(
+let i=0;
+i<cards.length;
+i++
+){
 
-    let title =
-    cards[i]
-    .getElementsByTagName(
-      "h2"
-    )[0];
+let title =
+cards[i]
+.getElementsByTagName(
+"h2"
+)[0];
 
-    let text =
-    title.innerText
-    .toLowerCase();
+let text =
+title.innerText
+.toLowerCase();
 
-    if(
-      text.includes(input)
-    ){
+if(
+text.includes(input)
+){
 
-      cards[i].style.display =
-      "block";
+cards[i].style.display =
+"block";
 
-    }else{
+}else{
 
-      cards[i].style.display =
-      "none";
+cards[i].style.display =
+"none";
 
-    }
+}
 
-  }
+}
 
 }
 
@@ -415,48 +453,94 @@ function searchProducts(){
 
 let adminProduct =
 JSON.parse(
-  localStorage.getItem(
-    "adminProduct"
-  )
+localStorage.getItem(
+"adminProduct"
+)
 );
 
 if(adminProduct){
 
-  let products =
-  document.querySelector(
-    ".products"
-  );
+let products =
+document.querySelector(
+".products"
+);
 
-  products.innerHTML += `
+products.innerHTML += `
 
-  <div class="card reveal">
+<div class="card reveal">
 
-  <img
-  src="${adminProduct.image}"
-  alt="${adminProduct.name}"
-  loading="lazy"
-  >
+<img
+src="${adminProduct.image}"
+alt="${adminProduct.name}"
+loading="lazy"
+>
 
-  <h2>
-  ${adminProduct.name}
-  </h2>
+<h2>
+${adminProduct.name}
+</h2>
 
-  <p>
-  ${adminProduct.price}
-  </p>
+<p>
+${adminProduct.price}
+</p>
 
-  <button
-  onclick="
-  trackCart();
-  addToCart();
-  "
-  >
-  Add To Cart
-  </button>
+<button
+onclick="
+trackCart();
+addDynamicProduct(
+'${adminProduct.name}',
+'${adminProduct.price}',
+'${adminProduct.image}'
+);
+"
+>
 
-  </div>
+Add To Cart
 
-  `;
+</button>
+
+</div>
+
+`;
+
+}
+
+/* DYNAMIC PRODUCT */
+
+function addDynamicProduct(
+name,
+price,
+image
+){
+
+let product = {
+
+name:name,
+price:price,
+image:image
+
+};
+
+let cart =
+JSON.parse(
+localStorage.getItem(
+"cart"
+)
+) || [];
+
+cart.push(product);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+updateCartCount();
+
+alert(
+"Product Added To Cart 😏"
+);
+
+openCart();
 
 }
 
@@ -464,43 +548,43 @@ if(adminProduct){
 
 let visits =
 localStorage.getItem(
-  "visits"
+"visits"
 );
 
 if(!visits){
 
-  visits = 0;
+visits = 0;
 
 }
 
 visits++;
 
 localStorage.setItem(
-  "visits",
-  visits
+"visits",
+visits
 );
 
 /* CART TRACKING */
 
 function trackCart(){
 
-  let cartClicks =
-  localStorage.getItem(
-    "cartClicks"
-  );
+let cartClicks =
+localStorage.getItem(
+"cartClicks"
+);
 
-  if(!cartClicks){
+if(!cartClicks){
 
-    cartClicks = 0;
+cartClicks = 0;
 
-  }
+}
 
-  cartClicks++;
+cartClicks++;
 
-  localStorage.setItem(
-    "cartClicks",
-    cartClicks
-  );
+localStorage.setItem(
+"cartClicks",
+cartClicks
+);
 
 }
 
@@ -537,26 +621,29 @@ revealElements
 
 function revealElements(){
 
-  reveals.forEach((el)=>{
+reveals.forEach((el)=>{
 
-    const top =
-    el.getBoundingClientRect().top;
+const top =
+el.getBoundingClientRect().top;
 
-    if(top < window.innerHeight - 100){
+if(
+top <
+window.innerHeight - 100
+){
 
-      el.classList.add(
-        "active"
-      );
+el.classList.add(
+"active"
+);
 
-    }
+}
 
-  });
+});
 
 }
 
 revealElements();
 
-/* CART DRAWER */
+/* OPEN CART */
 
 function openCart(){
 
@@ -571,31 +658,74 @@ JSON.parse(
 localStorage.getItem(
 "cart"
 )
-);
+) || [];
 
-if(cart){
+if(cart.length === 0){
 
 document.getElementById(
 "cartItems"
 ).innerHTML = `
 
+<p>
+No items added yet.
+</p>
+
+`;
+
+return;
+
+}
+
+let itemsHTML = "";
+
+cart.forEach((item,index)=>{
+
+itemsHTML += `
+
 <div class="drawerItem">
 
+<img
+src="${item.image}"
+>
+
 <h3>
-${cart.name}
+${item.name}
 </h3>
 
 <p>
-${cart.price}
+${item.price}
 </p>
+
+<button
+onclick="
+removeDrawerItem(
+${index}
+)
+"
+style="
+margin-top:10px;
+width:100%;
+"
+>
+
+Remove
+
+</button>
 
 </div>
 
 `;
 
-}
+});
+
+document.getElementById(
+"cartItems"
+).innerHTML =
+itemsHTML;
 
 }
+
+/* CLOSE CART */
 
 function closeCart(){
 
@@ -606,6 +736,50 @@ document.getElementById(
 );
 
 }
+
+/* REMOVE ITEM */
+
+function removeDrawerItem(index){
+
+let cart =
+JSON.parse(
+localStorage.getItem(
+"cart"
+)
+) || [];
+
+cart.splice(index,1);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+updateCartCount();
+
+openCart();
+
+}
+
+/* CART COUNT */
+
+function updateCartCount(){
+
+let cart =
+JSON.parse(
+localStorage.getItem(
+"cart"
+)
+) || [];
+
+document.getElementById(
+"cartCount"
+).innerText =
+cart.length;
+
+}
+
+updateCartCount();
 
 </script>
 
