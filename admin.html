@@ -167,8 +167,10 @@ prompt(
 "Enter Admin Password"
 );
 
-if(password !== "Kaif3669"){
-
+if(
+password === null ||
+password.trim() !== "Kaif3669"
+){
 document.body.innerHTML = `
 <h1 style="
 color:white;
