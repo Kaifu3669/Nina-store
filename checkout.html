@@ -1,54 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Checkout</title>
+<meta charset="UTF-8">
 
-  <style>
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    body{
-      background:#111;
-      color:white;
-      font-family:Arial;
-      padding:20px;
-    }
+<title>Checkout</title>
 
-    .box{
-      max-width:400px;
-      margin:auto;
-      background:#1e1e1e;
-      padding:20px;
-      border-radius:20px;
-    }
+<style>
 
-    input{
-      width:100%;
-      padding:12px;
-      margin-top:10px;
-      border:none;
-      border-radius:10px;
-    }
+body{
+  background:#111;
+  color:white;
+  font-family:Arial;
+  padding:20px;
+}
 
-    button{
-      width:100%;
-      padding:14px;
-      margin-top:15px;
-      border:none;
-      border-radius:10px;
-      background:white;
-      color:black;
-      font-weight:bold;
-    }
+.box{
+  max-width:400px;
+  margin:auto;
+  background:#1e1e1e;
+  padding:20px;
+  border-radius:20px;
+}
 
-    img{
-      width:100%;
-      border-radius:20px;
-      margin-top:20px;
-    }
+input{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
+}
 
-  </style>
+button{
+  width:100%;
+  padding:14px;
+  margin-top:15px;
+  border:none;
+  border-radius:10px;
+  background:white;
+  color:black;
+  font-weight:bold;
+}
+
+img{
+  width:100%;
+  border-radius:20px;
+  margin-top:20px;
+}
+
+</style>
 
 </head>
 <body>
@@ -65,83 +69,66 @@ method="POST"
 <input
 type="hidden"
 name="_next"
-value="https://Kaifu3669.github.io/nina-store/success.html"
-> 
+value="https://kaifu3669.github.io/nina-store/success.html"
+>
 
-<input type="text" name="name" placeholder="Full Name" required>
+<input
+type="text"
+name="name"
+placeholder="Full Name"
+required
+>
 
-<input type="text" name="phone" placeholder="Phone Number" required>
+<input
+type="text"
+name="phone"
+placeholder="Phone Number"
+required
+>
 
-<input type="text" name="address" placeholder="Address" required>
+<input
+type="text"
+name="address"
+placeholder="Address"
+required
+>
 
-<input type="text" name="utr" placeholder="UTR Number" required>
+<input
+type="text"
+name="utr"
+placeholder="UTR Number"
+required
+>
 
-<input type="hidden" name="product" value="Sennheiser AMBEO SMART HEADSET">
+<input
+type="hidden"
+name="product"
+value="Sennheiser AMBEO SMART HEADSET"
+>
 
-<input type="hidden" name="price" value="₹20,000">
-  
+<input
+type="hidden"
+name="price"
+value="₹20,000"
+>
+
 <p>
 After payment, enter your UTR number to confirm your order.
 </p>
-  
-<img src="qr.jpg" alt="QR Code">
 
-<button
-type="submit"
-onclick="trackOrder()"
+<img
+src="qr.jpg"
+alt="QR Code"
+loading="lazy"
 >
+
+<button type="submit">
 Submit Order
-</button> 
+</button>
 
 </form>
 
 </div>
-<script>
 
-function trackOrder(){
-
-  let orders =
-  JSON.parse(
-    localStorage.getItem(
-      "orderHistory"
-    )
-  ) || [];
-
-  let newOrder = {
-
-    product:
-    "Sennheiser AMBEO SMART HEADSET",
-
-    time:
-    new Date().toLocaleString()
-
-  };
-
-  orders.push(newOrder);
-
-  localStorage.setItem(
-    "orderHistory",
-    JSON.stringify(orders)
-  );
-
-  let totalOrders =
-  localStorage.getItem(
-    "orders"
-  );
-
-  if(!totalOrders){
-    totalOrders = 0;
-  }
-
-  totalOrders++;
-
-  localStorage.setItem(
-    "orders",
-    totalOrders
-  );
-
-}
-
-</script> 
 </body>
 </html>
