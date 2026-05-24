@@ -2,399 +2,92 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta charset="UTF-8" />
+  <title>Nina Store | Premium Audio Products</title>
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
-/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
-<title>
-Nina Store | Premium Audio Products
-</title>
+  <meta name="description" content="Premium audio products with luxury experience." />
 
-<link
-rel="icon"
-type="image/png"
-href="favicon.png"
-/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<meta
-name="description"
-content="Buy premium audio products and accessories at Nina Store."
->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<meta
-name="keywords"
-content="headphones, earbuds, premium audio, nina store"
->
-
-<meta
-name="author"
-content="Nina Store"
->
-
-<link
-rel="preconnect"
-href="https://fonts.googleapis.com"
->
-
-<link
-rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin
->
-
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet"
->
-
-<link
-rel="stylesheet"
-href="style.css"
-/>
-
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="heroContent">
-
-<h1>
-Feel Sound Differently
-</h1>
-
-<p>
-Premium audio experience
-with luxury aesthetics.
-</p>
-
-<a href="#products">
-
-<button>
-Explore Products
-</button>
-
-</a>
-
-</div>
-
-</section>
-
 <!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">Nina Store</div>
 
-<header>
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search premium audio..."
+    onkeyup="searchProducts()"
+  />
 
-<nav class="navbar">
-
-<h1>
-Nina Store
-</h1>
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search products..."
-onkeyup="searchProducts()"
-/>
-
-</nav>
-
+  <div class="nav-icons">
+    <span>🛒</span>
+  </div>
 </header>
 
-<!-- SECTION TITLE -->
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Feel Sound Differently</h1>
+    <p>Premium audio experience with luxury aesthetics & modern design.</p>
 
-<h2 class="sectionTitle">
-Featured Products
-</h2>
+    <button onclick="document.querySelector('#products').scrollIntoView({behavior:'smooth'})">
+      Explore Products
+    </button>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="feature">🎧 High Quality Sound</div>
+  <div class="feature">🚚 Fast Delivery</div>
+  <div class="feature">🔒 Secure Payments</div>
+  <div class="feature">💎 Premium Build</div>
+</section>
 
 <!-- PRODUCTS -->
+<section id="products" class="products-section">
 
-<section
-class="products"
-id="products"
->
+  <h2>Featured Products</h2>
 
-<!-- PRODUCT 1 -->
+  <div class="product-grid">
 
-<div class="card">
+    <!-- Example Card -->
+    <div class="product-card">
+      <img src="images/product1.jpg" alt="Headphones">
+      <h3>Wireless Headphones</h3>
+      <p>₹2,999</p>
+      <button>Add to Cart</button>
+    </div>
 
-<img
-src="headset.jpg"
-alt="Sennheiser AMBEO SMART HEADSET"
-loading="lazy"
-/>
+    <div class="product-card">
+      <img src="images/product2.jpg" alt="Earbuds">
+      <h3>Premium Earbuds</h3>
+      <p>₹1,999</p>
+      <button>Add to Cart</button>
+    </div>
 
-<h2>
-Sennheiser AMBEO SMART HEADSET
-</h2>
-
-<p>
-₹20,000
-</p>
-
-<button onclick="addToCart()">
-Add To Cart
-</button>
-
-</div>
-
-<!-- PRODUCT 2 -->
-
-<div class="card">
-
-<img
-src="earbuds.jpg"
-alt="Wireless Earbuds"
-loading="lazy"
-/>
-
-<h2>
-Wireless Earbuds
-</h2>
-
-<p>
-₹4,999
-</p>
-
-<button onclick="addToCart2()">
-Add To Cart
-</button>
-
-</div>
-
+  </div>
 </section>
 
 <!-- FOOTER -->
-
 <footer>
-
-<p>
-© 2026 Nina Store — All Rights Reserved
-</p>
-
-<div class="socials">
-
-<a href="#">
-Instagram
-</a>
-
-<a href="#">
-Telegram
-</a>
-
-<a href="#">
-Contact
-</a>
-
-</div>
-
+  <p>© 2026 Nina Store. All rights reserved.</p>
 </footer>
 
-<!-- SCRIPT -->
-
-<script>
-
-/* PRODUCT 1 */
-
-function addToCart(){
-
-  let product = {
-
-    name:
-    "Sennheiser AMBEO SMART HEADSET",
-
-    price:
-    "₹20,000"
-
-  };
-
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(product)
-  );
-
-  alert(
-    "Product Added To Cart 😏"
-  );
-
-  window.location.href =
-  "cart.html";
-
-}
-
-/* PRODUCT 2 */
-
-function addToCart2(){
-
-  let product = {
-
-    name:
-    "Wireless Earbuds",
-
-    price:
-    "₹4,999"
-
-  };
-
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(product)
-  );
-
-  alert(
-    "Product Added To Cart 😏"
-  );
-
-  window.location.href =
-  "cart.html";
-
-}
-
-/* SEARCH */
-
-function searchProducts(){
-
-  let input =
-  document.getElementById(
-    "searchInput"
-  ).value.toLowerCase();
-
-  let cards =
-  document.getElementsByClassName(
-    "card"
-  );
-
-  for(
-    let i=0;
-    i<cards.length;
-    i++
-  ){
-
-    let title =
-    cards[i]
-    .getElementsByTagName(
-      "h2"
-    )[0];
-
-    let text =
-    title.innerText
-    .toLowerCase();
-
-    if(
-      text.includes(input)
-    ){
-
-      cards[i].style.display =
-      "block";
-
-    }else{
-
-      cards[i].style.display =
-      "none";
-
-    }
-
-  }
-
-}
-
-/* ADMIN PRODUCT */
-
-let adminProduct =
-JSON.parse(
-  localStorage.getItem(
-    "adminProduct"
-  )
-);
-
-if(adminProduct){
-
-  let products =
-  document.querySelector(
-    ".products"
-  );
-
-  products.innerHTML += `
-
-  <div class="card">
-
-  <img
-  src="${adminProduct.image}"
-  alt="${adminProduct.name}"
-  loading="lazy"
-  >
-
-  <h2>
-  ${adminProduct.name}
-  </h2>
-
-  <p>
-  ${adminProduct.price}
-  </p>
-
-  <button>
-  Add To Cart
-  </button>
-
-  </div>
-
-  `;
-
-}
-
-/* VISITS */
-
-let visits =
-localStorage.getItem(
-  "visits"
-);
-
-if(!visits){
-
-  visits = 0;
-
-}
-
-visits++;
-
-localStorage.setItem(
-  "visits",
-  visits
-);
-
-/* CART CLICKS */
-
-function trackCart(){
-
-  let cartClicks =
-  localStorage.getItem(
-    "cartClicks"
-  );
-
-  if(!cartClicks){
-
-    cartClicks = 0;
-
-  }
-
-  cartClicks++;
-
-  localStorage.setItem(
-    "cartClicks",
-    cartClicks
-  );
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
-
-</html>
+</html> 
