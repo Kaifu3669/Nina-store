@@ -1,5 +1,16 @@
 body{
   margin:0;
+  font-family:Arial,sans-serif;
+  background:
+  linear-gradient(
+    135deg,
+    #0f0f0f,
+    #1a1a1a,
+    #111
+  );
+  color:white;
+}
+  margin:0;
   background:#0f0f0f;
   color:white;
   font-family:Arial,sans-serif;
@@ -27,7 +38,37 @@ header p{
   padding:40px;
 }
 
-.card{opacity:0;
+.card{
+  background:
+  rgba(255,255,255,0.05);
+
+  backdrop-filter:blur(12px);
+
+  border:
+  1px solid rgba(
+    255,255,255,0.08
+  );
+
+  width:320px;
+
+  border-radius:28px;
+
+  overflow:hidden;
+
+  transition:0.4s;
+
+  box-shadow:
+  0 10px 40px rgba(
+    0,0,0,0.4
+  );
+
+  opacity:0;
+
+  transform:translateY(30px);
+
+  animation:fadeUp 0.8s forwards;
+}
+opacity:0;
 transform:translateY(30px);
 animation:fadeUp 0.8s forwards;
   background:#1b1b1b;
