@@ -1,219 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 
 <meta
 name="viewport"
-content="width=device-width, initial-scale=1.0">
+content="width=device-width, initial-scale=1.0"
+/>
 
-<title>Admin Panel</title>
+<title>
+Firebase Admin Panel
+</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet"
+/>
 
 <style>
 
 body{
-  background:#111;
-  color:white;
-  font-family:Arial;
-  padding:20px;
+
+margin:0;
+padding:30px;
+
+background:
+linear-gradient(
+135deg,
+#0f0f0f,
+#181818,
+#111
+);
+
+font-family:'Poppins',sans-serif;
+
+color:white;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
 }
 
 .box{
-  max-width:500px;
-  margin:auto;
-  background:#1e1e1e;
-  padding:25px;
-  border-radius:20px;
+
+width:100%;
+max-width:500px;
+
+background:
+rgba(255,255,255,0.05);
+
+backdrop-filter:blur(14px);
+
+padding:35px;
+
+border-radius:28px;
+
+border:
+1px solid rgba(
+255,255,255,0.08
+);
+
+box-shadow:
+0 20px 60px rgba(
+0,0,0,0.5
+);
+
+}
+
+h1{
+
+text-align:center;
+
+margin-bottom:30px;
+
+font-size:38px;
+
 }
 
 input{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  border:none;
-  border-radius:10px;
+
+width:100%;
+
+padding:16px;
+
+margin-bottom:18px;
+
+border:none;
+
+outline:none;
+
+border-radius:16px;
+
+background:#1d1d1d;
+
+color:white;
+
+font-size:15px;
+
+box-sizing:border-box;
+
 }
 
 button{
-  width:100%;
-  padding:14px;
-  margin-top:15px;
-  border:none;
-  border-radius:12px;
-  background:white;
-  color:black;
-  font-weight:bold;
-  cursor:pointer;
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:18px;
+
+background:white;
+
+color:black;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:0.3s;
+
 }
 
-.stats{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-  margin-top:30px;
+button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 10px 30px rgba(
+255,255,255,0.2
+);
+
 }
 
-.statCard{
-  background:#2a2a2a;
-  padding:20px;
-  border-radius:20px;
-  text-align:center;
-}
+.info{
 
-.statCard h3{
-  margin-bottom:10px;
-  color:#bbb;
-}
+margin-top:20px;
 
-.statCard p{
-  font-size:28px;
-  font-weight:bold;
+text-align:center;
+
+color:#aaa;
+
+font-size:14px;
+
 }
 
 </style>
 
 </head>
 
-<body onload="checkPassword()">
+<body>
 
 <div class="box">
 
-<h1>Secret Admin 😏</h1>
+<h1>
+Firebase Admin 😏
+</h1>
 
 <input
 type="text"
 id="productName"
 placeholder="Product Name"
->
+/>
 
 <input
 type="text"
 id="productPrice"
 placeholder="Product Price"
->
+/>
 
 <input
 type="text"
 id="productImage"
-placeholder="Image File Name"
->
+placeholder="Image URL"
+/>
 
 <button onclick="saveProduct()">
-Save Product
+Upload Product
 </button>
 
-<button onclick="deleteProduct()">
-Delete Product
-</button>
-
-<hr style="margin:30px 0; border-color:#333;">
-
-<h2>Analytics Dashboard 📊</h2>
-
-<div class="stats">
-
-<div class="statCard">
-<h3>Total Visits</h3>
-<p id="visitData"></p>
-</div>
-
-<div class="statCard">
-<h3>Cart Clicks</h3>
-<p id="cartData"></p>
-</div>
-
-<div class="statCard">
-<h3>Total Orders</h3>
-<p id="orderData"></p>
-</div>
+<p class="info">
+Products upload directly to Firebase 🔥
+</p>
 
 </div>
 
-</div>
+<script type="module">
 
-<script>
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 
-function saveProduct(){
+import {
 
-  let product = {
-
-    name:
-    document.getElementById(
-      "productName"
-    ).value,
-
-    price:
-    document.getElementById(
-      "productPrice"
-    ).value,
-
-    image:
-    document.getElementById(
-      "productImage"
-    ).value
-
-  };
-
-  localStorage.setItem(
-    "adminProduct",
-    JSON.stringify(product)
-  );
-
-  alert("Product Saved 😏");
+getFirestore,
+collection,
+addDoc
 
 }
 
-function checkPassword(){
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
-  let pass =
-  prompt("Enter Admin Password 😏");
+const firebaseConfig = {
 
-  if(pass !== "Kaif3669"){
+apiKey:
+"AIzaSyDRwKRMybVwuEw6BKtnI98RBfy3eso8to8",
 
-    alert("Wrong Password");
+authDomain:
+"nina-store-866c1.firebaseapp.com",
 
-    window.location.href =
-    "index.html";
+projectId:
+"nina-store-866c1",
 
-  }
+storageBucket:
+"nina-store-866c1.firebasestorage.app",
+
+messagingSenderId:
+"113091256345",
+
+appId:
+"1:113091256345:web:dae299919cfd342e318a88",
+
+measurementId:
+"G-DH7TNBL6KG"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+window.saveProduct =
+async function(){
+
+let name =
+document.getElementById(
+"productName"
+).value;
+
+let price =
+document.getElementById(
+"productPrice"
+).value;
+
+let image =
+document.getElementById(
+"productImage"
+).value;
+
+if(
+!name ||
+!price ||
+!image
+){
+
+alert(
+"Fill all fields 😏"
+);
+
+return;
 
 }
 
-let totalVisits =
-localStorage.getItem("visits");
+try{
 
-let totalCart =
-localStorage.getItem("cartClicks");
+await addDoc(
+collection(db,"products"),
+{
 
-let totalOrders =
-localStorage.getItem("orders");
+name:name,
+price:price,
+image:image
 
-document.getElementById(
-"visitData"
-).innerText =
-totalVisits || 0;
+}
+);
 
-document.getElementById(
-"cartData"
-).innerText =
-totalCart || 0;
+alert(
+"Product Uploaded Successfully 🔥"
+);
 
 document.getElementById(
-"orderData"
-).innerText =
-totalOrders || 0;
-function deleteProduct(){
+"productName"
+).value = "";
 
-  localStorage.removeItem(
-    "adminProduct"
-  );
+document.getElementById(
+"productPrice"
+).value = "";
 
-  alert("Product Deleted 😏");
+document.getElementById(
+"productImage"
+).value = "";
 
-  location.reload();
+}catch(error){
 
-} 
+console.log(error);
+
+alert(
+"Upload Failed ❌"
+);
+
+}
+
+};
+
 </script>
 
 </body>
