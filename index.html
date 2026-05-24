@@ -433,7 +433,45 @@ alert(
 openCart();
 
 }
+/* DYNAMIC FIREBASE CART */
 
+function addDynamicCart(
+name,
+price,
+image
+){
+
+let product = {
+
+name:name,
+price:price,
+image:image
+
+};
+
+let cart =
+JSON.parse(
+localStorage.getItem(
+"cart"
+)
+) || [];
+
+cart.push(product);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+updateCartCount();
+
+alert(
+"Product Added To Cart 😏"
+);
+
+openCart();
+
+}
 /* SEARCH */
 
 function searchProducts(){
@@ -846,6 +884,12 @@ Add To Cart
 }
 
 loadProducts();
+
+setTimeout(()=>{
+
+revealElements();
+
+},500);
 
 </script>
 </body>
