@@ -16,6 +16,13 @@ html{
   scroll-behavior:smooth;
 }
 
+/* MAIN LAYOUT */
+
+main{
+  max-width:1400px;
+  margin:auto;
+}
+
 /* NAVBAR */
 
 header{
@@ -61,6 +68,7 @@ header{
 header h1{
   font-size:32px;
   margin:0;
+  font-weight:700;
 }
 
 header p{
@@ -70,15 +78,24 @@ header p{
 /* SEARCH */
 
 #searchInput{
+
   padding:12px;
+
   border:none;
+
   border-radius:12px;
+
   width:220px;
+
   background:#1e1e1e;
+
   color:white;
+
+  outline:none;
+
 }
 
-/* HERO */
+/* HERO SECTION */
 
 .hero{
 
@@ -101,7 +118,7 @@ header p{
   background:
   linear-gradient(
     rgba(0,0,0,0.65),
-    rgba(0,0,0,0.8)
+    rgba(0,0,0,0.82)
   ),
   url('hero.jpg');
 
@@ -118,7 +135,7 @@ header p{
   position:absolute;
 
   width:500px;
-  height:300px;
+  height:500px;
 
   background:
   radial-gradient(
@@ -176,6 +193,25 @@ header p{
 
 }
 
+/* HERO BUTTON */
+
+.hero button{
+
+  padding:16px 34px;
+
+  font-size:16px;
+
+  border-radius:18px;
+
+  background:
+  linear-gradient(
+    135deg,
+    white,
+    #dcdcdc
+  );
+
+}
+
 /* SECTION TITLE */
 
 .sectionTitle{
@@ -219,17 +255,50 @@ header p{
 /* PRODUCT CARD */
 
 .card{
-  background: linear-gradient(145deg,#1b1b1b,#101010);
+
+  position:relative;
+
+  background:
+  linear-gradient(
+    145deg,
+    #1b1b1b,
+    #101010
+  );
+
   border-radius:24px;
+
   overflow:hidden;
+
   transition:0.35s;
-  border:1px solid rgba(255,255,255,0.05);
 
-  /* ❌ REMOVE THESE */
-  /* max-width:300px; */
-  /* margin:auto; */
+  border:
+  1px solid rgba(
+    255,255,255,0.05
+  );
 
-  box-shadow:0 10px 30px rgba(0,0,0,0.35);
+  box-shadow:
+  0 10px 30px rgba(
+    0,0,0,0.35
+  );
+
+}
+
+.card::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+  linear-gradient(
+    rgba(255,255,255,0.04),
+    transparent
+  );
+
+  pointer-events:none;
+
 }
 
 .card:hover{
@@ -267,6 +336,8 @@ header p{
 
   padding:10px 20px 0;
 
+  margin:0;
+
 }
 
 .card p{
@@ -276,6 +347,8 @@ header p{
   color:#aaa;
 
   font-size:18px;
+
+  margin-top:10px;
 
 }
 
@@ -410,24 +483,7 @@ footer p{
 
 }
 
-.card{position:relative;
-.card::before{
-
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-  linear-gradient(
-    rgba(255,255,255,0.04),
-    transparent
-  );
-
-  pointer-events:none;
-
-}
+.card{
 
   max-width:100%;
 
@@ -453,28 +509,10 @@ header{
 
 }
 
-}
-.hero button{
+.sectionTitle{
 
-  padding:16px 34px;
-
-  font-size:16px;
-
-  border-radius:18px;
-
-  background:
-  linear-gradient(
-    135deg,
-    white,
-    #dcdcdc
-  );
+  font-size:36px;
 
 }
-
-main{
-
-  max-width:1400px;
-
-  margin:auto;
 
 }
