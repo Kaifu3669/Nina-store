@@ -1,132 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Checkout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Checkout | Nina Store</title>
 
 <style>
 
 body{
-  background:#111;
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:radial-gradient(circle at top,#1a1a1a,#0d0d0d);
   color:white;
-  font-family:Arial;
+}
+
+/* CENTER WRAPPER */
+.container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
   padding:20px;
 }
 
+/* BOX */
 .box{
-  max-width:400px;
-  margin:auto;
-  background:#1e1e1e;
-  padding:20px;
+  width:100%;
+  max-width:420px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.08);
   border-radius:20px;
+  padding:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
 }
 
+/* TITLE */
+h1{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+/* TRUST BADGE */
+.badge{
+  font-size:12px;
+  color:#9ca3af;
+  margin-bottom:15px;
+}
+
+/* INPUTS */
 input{
   width:100%;
   padding:12px;
-  margin-top:10px;
+  margin-top:12px;
+
   border:none;
-  border-radius:10px;
+  border-radius:12px;
+
+  background:#151515;
+  color:white;
+
+  outline:none;
+
+  transition:0.3s;
+  border:1px solid transparent;
 }
 
+input:focus{
+  border:1px solid rgba(255,255,255,0.25);
+  transform:scale(1.02);
+}
+
+/* QR */
+.qr{
+  width:100%;
+  border-radius:16px;
+  margin-top:15px;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* BUTTON */
 button{
   width:100%;
   padding:14px;
   margin-top:15px;
+
   border:none;
-  border-radius:10px;
-  background:white;
+  border-radius:12px;
+
+  background:linear-gradient(135deg,#ffffff,#d9d9d9);
   color:black;
-  font-weight:bold;
+
+  font-weight:600;
+  cursor:pointer;
+
+  transition:0.3s;
 }
 
-img{
-  width:100%;
-  border-radius:20px;
-  margin-top:20px;
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 35px rgba(255,255,255,0.15);
+}
+
+/* ORDER SUMMARY */
+.summary{
+  background:#111;
+  padding:12px;
+  border-radius:12px;
+  margin-top:12px;
+  font-size:14px;
+  color:#ccc;
+}
+
+small{
+  color:#888;
 }
 
 </style>
-
 </head>
+
 <body>
+
+<div class="container">
 
 <div class="box">
 
-<h1>Checkout</h1>
+<h1>Secure Checkout</h1>
 
-<form
-action="https://formsubmit.co/luxstoree@proton.me"
-method="POST"
->
+<div class="badge">🔒 Your information is encrypted & safe</div>
 
-<input
-type="hidden"
-name="_next"
-value="https://nina-store-two.vercel.app/success.html"
->
+<div class="summary">
+  <b>Product:</b> Sennheiser AMBEO SMART HEADSET<br>
+  <b>Price:</b> ₹20,000
+</div>
 
-<input
-type="text"
-name="name"
-placeholder="Full Name"
-required
->
+<form action="https://formsubmit.co/luxstoree@proton.me" method="POST">
 
-<input
-type="text"
-name="phone"
-placeholder="Phone Number"
-required
->
+<input type="hidden" name="_next" value="https://nina-store-two.vercel.app/success.html">
 
-<input
-type="text"
-name="address"
-placeholder="Address"
-required
->
+<input type="text" name="name" placeholder="Full Name" required>
 
-<input
-type="text"
-name="utr"
-placeholder="UTR Number"
-required
->
+<input type="text" name="phone" placeholder="Phone Number" required>
 
-<input
-type="hidden"
-name="product"
-value="Sennheiser AMBEO SMART HEADSET"
->
+<input type="text" name="address" placeholder="Address" required>
 
-<input
-type="hidden"
-name="price"
-value="₹20,000"
->
+<input type="text" name="utr" placeholder="UTR Number (After Payment)" required>
 
-<p>
-After payment, enter your UTR number to confirm your order.
-</p>
+<input type="hidden" name="product" value="Sennheiser AMBEO SMART HEADSET">
+<input type="hidden" name="price" value="₹20,000">
 
-<img
-src="qr.jpg"
-alt="QR Code"
-loading="lazy"
->
+<small>
+After paying via UPI, enter your UTR number to confirm order.
+</small>
 
-<button type="submit">
-Submit Order
-</button>
+<img class="qr" src="qr.jpg" alt="QR Code">
+
+<button type="submit">Place Order</button>
 
 </form>
+
+</div>
 
 </div>
 
