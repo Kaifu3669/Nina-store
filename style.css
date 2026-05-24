@@ -16,11 +16,45 @@ html{
   scroll-behavior:smooth;
 }
 
-/* MAIN LAYOUT */
+/* MAIN */
 
 main{
   max-width:1400px;
   margin:auto;
+}
+
+/* LOADER */
+
+#loader{
+
+  position:fixed;
+
+  inset:0;
+
+  background:#0b0b0b;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  z-index:99999;
+
+  animation:
+  loaderHide 1s ease 2s forwards;
+
+}
+
+#loader h1{
+
+  font-size:70px;
+
+  letter-spacing:12px;
+
+  animation:
+  pulse 1.2s infinite;
+
 }
 
 /* NAVBAR */
@@ -58,21 +92,27 @@ header{
 }
 
 .navbar{
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   gap:20px;
+
   flex-wrap:wrap;
+
 }
 
 header h1{
-  font-size:32px;
-  margin:0;
-  font-weight:700;
-}
 
-header p{
-  color:#aaa;
+  font-size:32px;
+
+  margin:0;
+
+  font-weight:700;
+
 }
 
 /* SEARCH */
@@ -95,7 +135,38 @@ header p{
 
 }
 
-/* HERO SECTION */
+/* CART BUTTON */
+
+.cartBtn{
+
+  text-decoration:none;
+
+  color:white;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  padding:12px 20px;
+
+  border-radius:14px;
+
+  transition:0.3s;
+
+  border:
+  1px solid rgba(
+    255,255,255,0.08
+  );
+
+}
+
+.cartBtn:hover{
+
+  background:
+  rgba(255,255,255,0.14);
+
+}
+
+/* HERO */
 
 .hero{
 
@@ -149,6 +220,30 @@ header p{
   border-radius:50%;
 
   filter:blur(40px);
+
+}
+
+/* PARTICLES */
+
+.particles{
+
+  position:absolute;
+
+  inset:0;
+
+  background-image:
+  radial-gradient(
+    rgba(255,255,255,0.12) 1px,
+    transparent 1px
+  );
+
+  background-size:
+  40px 40px;
+
+  opacity:0.25;
+
+  animation:
+  particlesMove 20s linear infinite;
 
 }
 
@@ -212,6 +307,51 @@ header p{
 
 }
 
+/* TICKER */
+
+.ticker{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  background:#111;
+
+  border-top:
+  1px solid rgba(
+    255,255,255,0.08
+  );
+
+  border-bottom:
+  1px solid rgba(
+    255,255,255,0.08
+  );
+
+  padding:14px 0;
+
+}
+
+.tickerTrack{
+
+  display:inline-block;
+
+  animation:
+  tickerMove 18s linear infinite;
+
+}
+
+.ticker span{
+
+  margin-right:80px;
+
+  color:#bbb;
+
+  font-size:14px;
+
+  letter-spacing:3px;
+
+}
+
 /* SECTION TITLE */
 
 .sectionTitle{
@@ -252,7 +392,7 @@ header p{
 
 }
 
-/* PRODUCT CARD */
+/* CARD */
 
 .card{
 
@@ -352,11 +492,7 @@ header p{
 
 }
 
-.card a{
-  text-decoration:none;
-}
-
-/* BUTTONS */
+/* BUTTON */
 
 button{
 
@@ -375,6 +511,8 @@ button{
   cursor:pointer;
 
   transition:0.3s;
+
+  margin:20px;
 
 }
 
@@ -430,15 +568,6 @@ footer p{
 
 /* ANIMATIONS */
 
-@keyframes fadeUp{
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-
 @keyframes fadeHero{
 
   from{
@@ -449,6 +578,58 @@ footer p{
   to{
     opacity:1;
     transform:translateY(0);
+  }
+
+}
+
+@keyframes pulse{
+
+  0%{
+    opacity:0.5;
+    transform:scale(0.95);
+  }
+
+  50%{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  100%{
+    opacity:0.5;
+    transform:scale(0.95);
+  }
+
+}
+
+@keyframes loaderHide{
+
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+
+}
+
+@keyframes tickerMove{
+
+  from{
+    transform:translateX(0);
+  }
+
+  to{
+    transform:translateX(-50%);
+  }
+
+}
+
+@keyframes particlesMove{
+
+  from{
+    transform:translateY(0);
+  }
+
+  to{
+    transform:translateY(-40px);
   }
 
 }
@@ -512,6 +693,12 @@ header{
 .sectionTitle{
 
   font-size:36px;
+
+}
+
+#loader h1{
+
+  font-size:48px;
 
 }
 
