@@ -910,3 +910,37 @@ header h1{
   }
 
 }
+/* CART DRAWER ITEMS */
+
+.drawerItem{
+  background:#181818;
+  border-radius:20px;
+  padding:15px;
+  margin-bottom:20px;
+}
+
+.drawerItem img{
+  width:100%;
+  height:140px;
+  object-fit:contain;
+  object-position:center;
+  background:#151515;
+  border-radius:16px;
+  padding:10px;
+}
+
+.drawerItem h3{
+  font-size:18px;
+  margin-top:14px;
+  line-height:1.4;
+}
+
+.drawerItem p{
+  color:#aaa;
+  margin-top:8px;
+}
+
+.drawerItem button{
+  width:100%;
+  margin:15px 0 0;
+} 
