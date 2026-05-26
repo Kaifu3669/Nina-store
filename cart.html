@@ -500,12 +500,6 @@ Price:
 
 <div class="actions">
 
-<a href="checkout.html">
-
-Proceed To Checkout
-
-</a>
-
 <button
 class="removeBtn"
 onclick="removeCartItem(${index})"
@@ -519,22 +513,18 @@ Remove Product
 
 </div>
 
-</div>
-
 `;
 
 });
 
 html += `
 
-<div class="grandTotal">
+<div class="trust">
 
 <h2>
 Grand Total:
 ₹${grandTotal.toLocaleString()}
 </h2>
-
-<div class="trust">
 
 ✔ Secure Checkout<br>
 
@@ -543,6 +533,14 @@ Grand Total:
 ✔ Premium Packaging
 
 </div>
+
+<div class="actions">
+
+<a href="checkout.html">
+
+Proceed To Checkout
+
+</a>
 
 </div>
 
