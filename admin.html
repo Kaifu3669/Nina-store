@@ -21,6 +21,10 @@ rel="stylesheet"
 
 <style>
 
+*{
+box-sizing:border-box;
+}
+
 body{
 
 margin:0;
@@ -40,7 +44,7 @@ color:white;
 
 min-height:100vh;
 
-display:flex;
+display:none;
 
 justify-content:center;
 
@@ -104,7 +108,11 @@ color:white;
 
 font-size:15px;
 
-box-sizing:border-box;
+}
+
+input::placeholder{
+
+color:#777;
 
 }
 
@@ -153,6 +161,20 @@ color:#aaa;
 
 font-size:14px;
 
+line-height:1.7;
+
+}
+
+.denied{
+
+width:100%;
+
+text-align:center;
+
+font-size:40px;
+
+font-weight:700;
+
 }
 
 </style>
@@ -160,35 +182,7 @@ font-size:14px;
 </head>
 
 <body>
-<script>
 
-let password =
-prompt(
-"Enter Admin Password"
-);
-
-if(
-password === null ||
-password.trim() !== "Kaif3669"
-){
-document.body.innerHTML = `
-<h1 style="
-color:white;
-font-family:Arial;
-text-align:center;
-margin-top:100px;
-">
-Access Denied ❌
-</h1>
-`;
-
-throw new Error(
-"Wrong Password"
-);
-
-}
-
-</script>
 <div class="box">
 
 <h1>
@@ -214,14 +208,58 @@ placeholder="Image URL"
 />
 
 <button onclick="saveProduct()">
+
 Upload Product
+
 </button>
 
 <p class="info">
+
 Products upload directly to Firebase 🔥
+
 </p>
 
 </div>
+
+<script>
+
+/* PASSWORD PROTECTION */
+
+let password =
+prompt(
+"Enter Admin Password"
+);
+
+if(
+password === null ||
+password.trim() !== "Kaif3669"
+){
+
+document.body.style.display =
+"flex";
+
+document.body.innerHTML = `
+
+<div class="denied">
+
+Access Denied ❌
+
+</div>
+
+`;
+
+throw new Error(
+"Wrong Password"
+);
+
+}else{
+
+document.body.style.display =
+"flex";
+
+}
+
+</script>
 
 <script type="module">
 
@@ -237,6 +275,8 @@ addDoc
 }
 
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
@@ -269,23 +309,27 @@ initializeApp(firebaseConfig);
 const db =
 getFirestore(app);
 
+/* SAVE PRODUCT */
+
 window.saveProduct =
 async function(){
 
 let name =
 document.getElementById(
 "productName"
-).value;
+).value.trim();
 
 let price =
 document.getElementById(
 "productPrice"
-).value;
+).value.trim();
 
 let image =
 document.getElementById(
 "productImage"
-).value;
+).value.trim();
+
+/* VALIDATION */
 
 if(
 !name ||
@@ -301,6 +345,20 @@ return;
 
 }
 
+/* IMAGE URL CHECK */
+
+if(
+!image.startsWith("http")
+){
+
+alert(
+"Enter valid image URL ❌"
+);
+
+return;
+
+}
+
 try{
 
 await addDoc(
@@ -309,7 +367,8 @@ collection(db,"products"),
 
 name:name,
 price:price,
-image:image
+image:image,
+createdAt:Date.now()
 
 }
 );
@@ -317,6 +376,8 @@ image:image
 alert(
 "Product Uploaded Successfully 🔥"
 );
+
+/* CLEAR INPUTS */
 
 document.getElementById(
 "productName"
@@ -335,7 +396,7 @@ document.getElementById(
 console.log(error);
 
 alert(
-"Upload Failed ❌"
+"Upload Failed ❌\nCheck Firebase Rules"
 );
 
 }
@@ -345,4 +406,5 @@ alert(
 </script>
 
 </body>
+
 </html>
