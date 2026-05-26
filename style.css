@@ -60,12 +60,12 @@ main{
 /* HERO */
 
 .hero{
-  min-height:100vh;
+  min-height:60vh;
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:140px 20px 100px;
+  padding:100px 20px 100px;
   position:relative;
   overflow:hidden;
 
@@ -76,7 +76,7 @@ main{
   ),
   url('hero.jpg');
 
-  background-size:cover;
+  background-size:landscape;
   background-position:center center;
   background-repeat:no-repeat;
 }
@@ -183,7 +183,7 @@ header h1{
 #searchInput{
   width:260px;
   padding:14px 18px;
-  border-radius:14px;
+  border-radius:10px;
   border:
   1px solid rgba(
     255,255,255,0.08
