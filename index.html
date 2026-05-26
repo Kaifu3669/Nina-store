@@ -769,19 +769,13 @@ behavior:"smooth"
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 
-import { getAnalytics }
-from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
-
 import {
 
 getFirestore,
 collection,
-addDoc,
-getDocs,
-deleteDoc,
-doc
+getDocs
 
-}
+} 
 
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
@@ -812,22 +806,6 @@ measurementId:
 
 const app =
 initializeApp(firebaseConfig);
-
-let analytics;
-
-try{
-
-analytics =
-getAnalytics(app);
-
-}catch(error){
-
-console.log(
-"Analytics not supported"
-);
-
-}
-
 const db =
 getFirestore(app);
 
@@ -882,7 +860,8 @@ Add To Cart
 });
 
 }
-
+window.addDynamicCart = addDynamicCart;
+  
 loadProducts();
 
 setTimeout(()=>{
