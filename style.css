@@ -31,22 +31,19 @@ main{
   width:22px;
   height:22px;
 
-  border:
-  2px solid white;
+  border:2px solid white;
 
   border-radius:50%;
 
   position:fixed;
 
-  transform:
-  translate(-50%,-50%);
+  transform:translate(-50%,-50%);
 
   pointer-events:none;
 
   z-index:999999;
 
-  transition:
-  transform 0.08s linear;
+  transition:transform 0.08s linear;
 
   backdrop-filter:blur(2px);
 
@@ -83,8 +80,7 @@ main{
 
   letter-spacing:12px;
 
-  animation:
-  pulse 1.2s infinite;
+  animation:pulse 1.2s infinite;
 
 }
 
@@ -92,7 +88,7 @@ main{
 
 .hero{
 
-  min-height:85vh;
+  min-height:65vh;
 
   display:flex;
 
@@ -102,7 +98,7 @@ main{
 
   text-align:center;
 
-  padding:30px;
+  padding:120px 20px 80px;
 
   position:relative;
 
@@ -110,14 +106,16 @@ main{
 
   background:
   linear-gradient(
-    rgba(0,0,0,0.65),
-    rgba(0,0,0,0.82)
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.75)
   ),
   url('hero.jpg');
 
   background-size:cover;
 
-  background-position:center;
+  background-position:center center;
+
+  background-repeat:no-repeat;
 
 }
 
@@ -157,8 +155,7 @@ main{
     transparent 1px
   );
 
-  background-size:
-  40px 40px;
+  background-size:40px 40px;
 
   opacity:0.25;
 
@@ -180,13 +177,19 @@ main{
 
 .hero h1{
 
-  font-size:58px;
+  font-size:clamp(
+    38px,
+    5vw,
+    72px
+  );
 
   font-weight:700;
 
-  line-height:1.05;
+  line-height:1.1;
 
-  margin-bottom:20px;
+  max-width:900px;
+
+  margin:auto;
 
   letter-spacing:-2px;
 
@@ -196,15 +199,13 @@ main{
 
   font-size:18px;
 
-  color:#cfcfcf;
+  color:#d1d1d1;
 
-  max-width:600px;
+  max-width:650px;
 
-  margin:auto;
+  margin:25px auto;
 
-  margin-bottom:35px;
-
-  line-height:1.7;
+  line-height:1.8;
 
 }
 
@@ -539,15 +540,11 @@ header h1{
 }
 
 .leftBtn{
-
   left:-10px;
-
 }
 
 .rightBtn{
-
   right:-10px;
-
 }
 
 /* PRODUCTS */
@@ -603,24 +600,6 @@ header h1{
 
 }
 
-.card::before{
-
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-  linear-gradient(
-    rgba(255,255,255,0.04),
-    transparent
-  );
-
-  pointer-events:none;
-
-}
-
 .card:hover{
 
   transform:
@@ -638,7 +617,7 @@ header h1{
 
   width:100%;
 
-  height:190px;
+  height:220px;
 
   object-fit:contain;
 
@@ -769,8 +748,6 @@ button:hover{
     255,255,255,0.08
   );
 
-  backdrop-filter:blur(20px);
-
   overflow-y:auto;
 
 }
@@ -778,86 +755,6 @@ button:hover{
 #cartDrawer.active{
 
   right:0;
-
-}
-
-.cartTop{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  margin-bottom:30px;
-
-}
-
-.closeCart{
-
-  background:none;
-
-  color:white;
-
-  font-size:26px;
-
-  border:none;
-
-  cursor:pointer;
-
-  margin:0;
-
-}
-
-.drawerItem{
-
-  background:#1a1a1a;
-
-  padding:20px;
-
-  border-radius:18px;
-
-  margin-bottom:20px;
-
-}
-
-.drawerItem img{
-
-  width:100%;
-
-  height:120px;
-
-  object-fit:contain;
-
-  background:#151515;
-
-  border-radius:14px;
-
-  padding:10px;
-
-  box-sizing:border-box;
-
-  margin-bottom:10px;
-
-}
-
-.drawerItem h3{
-
-  margin:0 0 10px;
-
-}
-
-.drawerItem p{
-
-  color:#aaa;
-
-}
-
-.checkoutBtn{
-
-  width:100%;
-
-  margin-top:30px;
 
 }
 
@@ -875,95 +772,19 @@ footer{
 
 }
 
-footer p{
-  color:#888;
-}
+/* DESKTOP HERO FIX */
 
-.socials{
-  margin-top:15px;
-}
+@media(min-width:1200px){
 
-.socials a{
+.hero{
 
-  color:white;
+  min-height:75vh;
 
-  margin:0 10px;
+  background-size:100% auto;
 
-  text-decoration:none;
-
-  transition:0.3s;
+  background-position:center top;
 
 }
-
-.socials a:hover{
-  color:#bbb;
-}
-
-/* ANIMATIONS */
-
-@keyframes fadeHero{
-
-  from{
-    opacity:0;
-    transform:translateY(40px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-
-@keyframes pulse{
-
-  0%{
-    opacity:0.5;
-    transform:scale(0.95);
-  }
-
-  50%{
-    opacity:1;
-    transform:scale(1);
-  }
-
-  100%{
-    opacity:0.5;
-    transform:scale(0.95);
-  }
-
-}
-
-@keyframes loaderHide{
-
-  to{
-    opacity:0;
-    visibility:hidden;
-  }
-
-}
-
-@keyframes tickerMove{
-
-  from{
-    transform:translateX(0);
-  }
-
-  to{
-    transform:translateX(-50%);
-  }
-
-}
-
-@keyframes particlesMove{
-
-  from{
-    transform:translateY(0);
-  }
-
-  to{
-    transform:translateY(-40px);
-  }
 
 }
 
@@ -983,7 +804,7 @@ body{
 
   min-height:75vh;
 
-  padding-top:100px;
+  padding-top:120px;
 
 }
 
@@ -1054,5 +875,73 @@ header{
   display:none;
 
 }
+
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeHero{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+@keyframes pulse{
+
+  0%{
+    opacity:0.5;
+    transform:scale(0.95);
+  }
+
+  50%{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  100%{
+    opacity:0.5;
+    transform:scale(0.95);
+  }
+
+}
+
+@keyframes loaderHide{
+
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+
+}
+
+@keyframes tickerMove{
+
+  from{
+    transform:translateX(0);
+  }
+
+  to{
+    transform:translateX(-50%);
+  }
+
+}
+
+@keyframes particlesMove{
+
+  from{
+    transform:translateY(0);
+  }
+
+  to{
+    transform:translateY(-40px);
+  }
 
 }
