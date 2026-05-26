@@ -58,13 +58,15 @@ body{
 
   padding:20px;
 
+  box-sizing:border-box;
+
 }
 
 .cartBox{
 
   width:100%;
 
-  max-width:500px;
+  max-width:700px;
 
   background:
   rgba(255,255,255,0.05);
@@ -151,53 +153,11 @@ h1{
 
 }
 
-.qtyBox{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:15px;
-
-  margin-bottom:25px;
-
-}
-
-.qtyBtn{
-
-  width:42px;
-
-  height:42px;
-
-  border:none;
-
-  border-radius:12px;
-
-  background:white;
-
-  color:black;
-
-  font-size:20px;
-
-  cursor:pointer;
-
-}
-
-.qty{
-
-  font-size:20px;
-
-  min-width:30px;
-
-  text-align:center;
-
-}
-
 .total{
 
   font-size:22px;
 
-  margin-bottom:25px;
+  margin-top:15px;
 
 }
 
@@ -208,6 +168,8 @@ h1{
   flex-direction:column;
 
   gap:15px;
+
+  margin-top:20px;
 
 }
 
@@ -310,6 +272,29 @@ h1{
 
 }
 
+.cartItem{
+
+  border-bottom:
+  1px solid rgba(
+    255,255,255,0.08
+  );
+
+  padding-bottom:25px;
+
+  margin-bottom:25px;
+
+}
+
+.cartItem:last-child{
+
+  border-bottom:none;
+
+  margin-bottom:0;
+
+  padding-bottom:0;
+
+}
+
 @media(max-width:768px){
 
 h1{
@@ -353,11 +338,11 @@ JSON.parse(
 localStorage.getItem(
 "cart"
 )
-);
+) || [];
 
 /* EMPTY CART */
 
-if(!cart){
+if(cart.length === 0){
 
 document.getElementById(
 "cartContent"
@@ -387,88 +372,53 @@ Continue Shopping
 
 }else{
 
-/* DEFAULT IMAGE */
-
-let image =
-"headset.jpg";
-
-if(
-cart.name ===
-"Wireless Earbuds"
-){
-
-image = "earbuds.jpg";
+renderCart();
 
 }
 
-/* QUANTITY */
+/* RENDER CART */
 
-let quantity = 1;
+function renderCart(){
 
-/* PRICE CLEAN */
+let html = "";
+
+let grandTotal = 0;
+
+cart.forEach((item,index)=>{
 
 let cleanPrice =
 parseInt(
-cart.price.replace(
+item.price.replace(
 /[^0-9]/g,
 ""
 )
 );
 
-/* RENDER */
+grandTotal += cleanPrice;
 
-function renderCart(){
+html += `
 
-let total =
-cleanPrice * quantity;
-
-document.getElementById(
-"cartContent"
-).innerHTML = `
-
-<div class="product">
+<div class="product cartItem">
 
 <img
-src="${image}"
-alt="${cart.name}"
+src="${item.image}"
+alt="${item.name}"
 >
 
 <div class="info">
 
 <h2>
-${cart.name}
+${item.name}
 </h2>
 
 <p class="price">
-${cart.price}
+${item.price}
 </p>
-
-<div class="qtyBox">
-
-<button
-class="qtyBtn"
-onclick="decreaseQty()"
->
-−
-</button>
-
-<div class="qty">
-${quantity}
-</div>
-
-<button
-class="qtyBtn"
-onclick="increaseQty()"
->
-+
-</button>
-
-</div>
 
 <div class="total">
 
-Total:
-₹${total.toLocaleString()}
+Price:
+₹${cleanPrice.toLocaleString()}
 
 </div>
 
@@ -482,22 +432,12 @@ Proceed To Checkout
 
 <button
 class="removeBtn"
-onclick="removeCart()"
+onclick="removeCartItem(${index})"
 >
 
 Remove Product
 
 </button>
-
-</div>
-
-<div class="trust">
-
-✔ Secure Checkout<br>
-
-✔ Fast Delivery<br>
-
-✔ Premium Packaging
 
 </div>
 
@@ -507,45 +447,53 @@ Remove Product
 
 `;
 
+});
+
+html += `
+
+<div class="trust">
+
+<h2>
+Grand Total:
+₹${grandTotal.toLocaleString()}
+</h2>
+
+✔ Secure Checkout<br>
+
+✔ Fast Delivery<br>
+
+✔ Premium Packaging
+
+</div>
+
+`;
+
+document.getElementById(
+"cartContent"
+).innerHTML = html;
+
 }
 
-renderCart();
+/* REMOVE PRODUCT */
 
-/* INCREASE */
+function removeCartItem(index){
 
-function increaseQty(){
+cart.splice(index,1);
 
-quantity++;
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
 
-renderCart();
-
-}
-
-/* DECREASE */
-
-function decreaseQty(){
-
-if(quantity > 1){
-
-quantity--;
-
-renderCart();
-
-}
-
-}
-
-/* REMOVE */
-
-function removeCart(){
+if(cart.length === 0){
 
 localStorage.removeItem(
 "cart"
 );
 
-location.reload();
-
 }
+
+location.reload();
 
 }
 
