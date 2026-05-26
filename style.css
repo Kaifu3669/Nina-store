@@ -796,8 +796,8 @@ header h1{
 }
 
 .drawerItem img{
-  width:120px;
-  height:120px;
+  width:80px;
+  height:80px;
   object-fit:contain;
   object-position:center;
   background:#151515;
