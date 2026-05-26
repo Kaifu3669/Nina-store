@@ -770,13 +770,10 @@ import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 
 import {
-
 getFirestore,
 collection,
 getDocs
-
-} 
-
+}
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -797,21 +794,19 @@ messagingSenderId:
 "113091256345",
 
 appId:
-"1:113091256345:web:dae299919cfd342e318a88",
-
-measurementId:
-"G-DH7TNBL6KG"
+"1:113091256345:web:dae299919cfd342e318a88"
 
 };
 
 const app =
 initializeApp(firebaseConfig);
+
 const db =
 getFirestore(app);
 
-/* LOAD FIREBASE PRODUCTS */
-
 async function loadProducts(){
+
+try{
 
 const querySnapshot =
 await getDocs(
@@ -859,17 +854,25 @@ Add To Cart
 
 });
 
-}
-window.addDynamicCart = addDynamicCart;
-  
-loadProducts();
-
 setTimeout(()=>{
 
 revealElements();
 
-},500);
+},300);
 
+}catch(error){
+
+console.log(
+"Firebase Error:",
+error
+);
+
+}
+
+}
+
+loadProducts();
+  
 </script>
 </body>
 </html>
