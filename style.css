@@ -18,7 +18,7 @@ html{
 }
 
 main{
-  max-width:1400px;
+  max-width:1000px;
   margin:auto;
 }
 
@@ -165,7 +165,7 @@ main{
 @media(max-width:768px){
 
 .hero{
-  min-height:85vh;
+  min-height:60vh;
   padding:170px 20px 90px;
 }
 
@@ -226,7 +226,7 @@ header h1{
 /* SEARCH */
 
 #searchInput{
-  width:260px;
+  width:250px;
   padding:14px 18px;
   border-radius:10px;
   border:
@@ -473,7 +473,7 @@ header h1{
 }
 
 .hero{
-  min-height:100vh;
+  min-height:60vh;
   padding:190px 20px 100px;
   background-position:center;
 }
