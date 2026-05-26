@@ -349,3 +349,220 @@ header h1{
 }
 
 }
+/* PRODUCTS */
+
+.products{
+  display:grid;
+  grid-template-columns:
+  repeat(
+    auto-fit,
+    minmax(260px,1fr)
+  );
+  gap:28px;
+  padding:50px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* CARD */
+
+.card{
+  position:relative;
+  background:
+  linear-gradient(
+    145deg,
+    #1b1b1b,
+    #101010
+  );
+  border-radius:24px;
+  overflow:hidden;
+  transition:0.35s;
+  border:
+  1px solid rgba(
+    255,255,255,0.05
+  );
+  box-shadow:
+  0 10px 30px rgba(
+    0,0,0,0.35
+  );
+}
+
+.card:hover{
+  transform:
+  translateY(-10px)
+  scale(1.02);
+
+  box-shadow:
+  0 20px 60px rgba(
+    0,0,0,0.6
+  );
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:contain;
+  padding:25px;
+  background:#151515;
+  box-sizing:border-box;
+  transition:0.4s;
+}
+
+.card:hover img{
+  transform:scale(1.06);
+}
+
+.card h2{
+  font-size:24px;
+  padding:10px 20px 0;
+  margin:0;
+}
+
+.card p{
+  padding:0 20px;
+  color:#aaa;
+  font-size:18px;
+  margin-top:10px;
+}
+
+/* BUTTON */
+
+button{
+  border:none;
+  background:white;
+  color:black;
+  padding:14px 24px;
+  border-radius:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+  margin:20px;
+}
+
+button:hover{
+  transform:
+  translateY(-2px);
+
+  box-shadow:
+  0 10px 30px rgba(
+    255,255,255,0.2
+  );
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:60px;
+  padding:40px 20px;
+  text-align:center;
+  background:#0a0a0a;
+}
+
+/* REVEAL */
+
+.reveal{
+  opacity:0;
+  transform:
+  translateY(60px);
+  transition:
+  all 1s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:
+  translateY(0);
+}
+
+/* CART DRAWER */
+
+#cartDrawer{
+  position:fixed;
+  top:0;
+  right:-420px;
+  width:380px;
+  max-width:90%;
+  height:100vh;
+  background:#111;
+  z-index:99999;
+  transition:0.45s ease;
+  padding:25px;
+  box-sizing:border-box;
+  border-left:
+  1px solid rgba(
+    255,255,255,0.08
+  );
+  overflow-y:auto;
+}
+
+#cartDrawer.active{
+  right:0;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeHero{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+@keyframes pulse{
+
+  0%{
+    opacity:0.5;
+    transform:scale(0.95);
+  }
+
+  50%{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  100%{
+    opacity:0.5;
+    transform:scale(0.95);
+  }
+
+}
+
+@keyframes loaderHide{
+
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+
+}
+
+@keyframes tickerMove{
+
+  from{
+    transform:translateX(0);
+  }
+
+  to{
+    transform:translateX(-50%);
+  }
+
+}
+
+@keyframes particlesMove{
+
+  from{
+    transform:translateY(0);
+  }
+
+  to{
+    transform:translateY(-40px);
+  }
+
+} 
