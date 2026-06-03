@@ -279,13 +279,13 @@ required
 <input
 type="hidden"
 name="product"
-value="Sennheiser AMBEO SMART HEADSET"
+id="productField"
 >
 
 <input
 type="hidden"
 name="price"
-value="₹20,000"
+id="priceField"
 >
 
 <p>
@@ -315,6 +315,40 @@ Nina Store Secure Checkout 🔒
 
 </div>
 
+<script>
+
+let cart =
+JSON.parse(
+localStorage.getItem("cart")
+) || [];
+
+let productNames = "";
+let total = 0;
+
+cart.forEach(item => {
+
+productNames += item.name + ", ";
+
+let price =
+parseInt(
+String(item.price)
+.replace(/[^0-9]/g,"")
+);
+
+total += price;
+
+});
+
+document.getElementById(
+"productField"
+).value = productNames || "No Product";
+
+document.getElementById(
+"priceField"
+).value = "₹" + total;
+
+</script>
+  
 </body>
 
 </html>
