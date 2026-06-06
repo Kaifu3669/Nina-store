@@ -638,7 +638,7 @@ header{
 
 .navbar{
   flex-direction:column;
-  gap:16px;
+  gap:10px;
 }
 
 header h1{
@@ -647,8 +647,9 @@ header h1{
 
 #searchInput{
   width:100%;
-  padding:16px;
-  border-radius:16px;
+  max-width:500px;
+  padding:16px 20px;
+  border-radius:18px;
   font-size:16px;
 }
 
@@ -921,14 +922,17 @@ header h1{
   color:white;
 } 
 .callNow{
-  display:block;
-  margin-top:15px;
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 22px;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:14px;
   color:white;
   text-decoration:none;
-  font-size:16px;
   font-weight:600;
-} 
-
+  backdrop-filter:blur(10px);
+}
 .whatsappBtn{
   position:fixed;
   bottom:20px;
