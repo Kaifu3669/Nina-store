@@ -324,7 +324,7 @@ Ring Vibrator
 </h2>
 
 <p>
-₹299
+₹499
 </p>
 
 <button
@@ -340,16 +340,16 @@ Add To Cart
 
 <img
 src="con.jpg"
-alt="Silicon Extender"
+alt="Dragon"
 loading="lazy"
 />
 
 <h2>
-Silicone Extender
+Dragon
 </h2>
 
 <p>
-₹199
+₹899
 </p>
 
 <button
@@ -375,7 +375,7 @@ Transparent 69 DOTS
 </h2>
 
 <p>
-₹399
+₹899
 </p>
 
 <button
@@ -385,6 +385,81 @@ Add To Cart
 </button>
 
 </div>
+<!-- PRODUCT 4 -->
+  
+<div class="card reveal">
+
+<img
+src="bt.jpg"
+alt="BT Dragon"
+loading="lazy"
+/>
+
+<h2>
+BT Dragon
+</h2>
+
+<p>
+₹899
+</p>
+
+<button
+onclick="trackCart(); addToCart2();"
+>
+Add To Cart
+</button>
+
+</div>  
+<!-- PRODUCT 5 -->
+  
+<div class="card reveal">
+
+<img
+src="belt.jpg"
+alt="Belt"
+loading="lazy"
+/>
+
+<h2>
+Belt
+</h2>
+
+<p>
+₹1799
+</p>
+
+<button
+onclick="trackCart(); addToCart2();"
+>
+Add To Cart
+</button>
+
+</div> 
+<!-- PRODUCT 6 -->
+  
+<div class="card reveal">
+
+<img
+src="big.jpg"
+alt="Big Thunder"
+loading="lazy"
+/>
+
+<h2>
+Big Thunder
+</h2>
+
+<p>
+₹999
+</p>
+
+<button
+onclick="trackCart(); addToCart2();"
+>
+Add To Cart
+</button>
+
+</div>  
 
 </section>
 
@@ -474,7 +549,7 @@ name:
 "Ring Viberator",
 
 price:
-"₹299",
+"₹499",
 
 image:
 "ring.jpg"
@@ -512,10 +587,10 @@ function addToCart2(){
 let product = {
 
 name:
-"Silicon Extender",
+"Dragon",
 
 price:
-"₹199",
+"₹899",
 
 image:
 "con.jpg"
@@ -556,10 +631,130 @@ name:
 "Transparent 69 DOTS",
 
 price:
-"₹399",
+"₹899",
 
 image:
 "trans.jpg"
+
+};
+
+let cart =
+JSON.parse(
+localStorage.getItem(
+"cart"
+)
+) || [];
+
+cart.push(product);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+updateCartCount();
+
+alert(
+"Product Added To Cart 😏"
+);
+
+openCart();
+
+}
+/* PRODUCT 4 */
+
+function addToCart4(){
+
+let product = {
+
+name:
+"BT Dragon",
+
+price:
+"₹899",
+
+image:
+"bt.jpg"
+
+};
+
+let cart =
+JSON.parse(
+localStorage.getItem(
+"cart"
+)
+) || [];
+
+cart.push(product);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+updateCartCount();
+
+alert(
+"Product Added To Cart 😏"
+);
+
+openCart();
+
+}
+/* PRODUCT 5 */
+
+function addToCart5(){
+
+let product = {
+
+name:
+"Belt",
+
+price:
+"₹1799",
+
+image:
+"belt.jpg"
+
+};
+
+let cart =
+JSON.parse(
+localStorage.getItem(
+"cart"
+)
+) || [];
+
+cart.push(product);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+updateCartCount();
+
+alert(
+"Product Added To Cart 😏"
+);
+
+openCart();
+
+}
+/* PRODUCT 6 */
+
+function addToCart6(){
+
+let product = {
+
+name:
+"Big Thunder",
+
+price:
+"₹999",
+
+image:
+"big.jpg"
 
 };
 
