@@ -64,7 +64,7 @@ main{
 /* HERO */
 
 .hero{
-  min-height:72vh;
+  min-height:60vh;
 
   display:flex;
   justify-content:center;
@@ -72,7 +72,7 @@ main{
 
   text-align:center;
 
-  padding:140px 20px 100px;
+  padding:120px 20px 90px;
 
   position:relative;
   overflow:hidden;
@@ -675,8 +675,8 @@ header h1{
 /* HERO */
 
 .hero{
-  min-height:100vh;
-  padding:260px 20px 80px;
+  min-height:80vh;
+  padding:190px 20px 65px;
 }
 
 .heroContent{
