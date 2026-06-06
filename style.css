@@ -734,7 +734,10 @@ header h1{
 }
 
 }
-
+.heroGif{
+  width:160px;
+  margin-bottom:20px;
+} 
 
 /* ANIMATIONS */
 
@@ -969,4 +972,11 @@ header h1{
   background:#25D366;
   z-index:9999;
   box-shadow:0 8px 25px rgba(37,211,102,0.4);
+} 
+.heroGif{
+  width:220px;
+  max-width:70%;
+  display:block;
+  margin:0 auto 25px;
+  border-radius:20px;
 } 
