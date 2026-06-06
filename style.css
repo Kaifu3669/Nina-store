@@ -620,6 +620,7 @@ footer{
 
 /* MOBILE */
 
+
 @media(max-width:768px){
 
 body{
@@ -630,63 +631,86 @@ body{
   display:none;
 }
 
+/* NAVBAR */
+
 header{
   width:92%;
-  padding:18px;
-  top:14px;
+  padding:12px;
+  top:10px;
+  border-radius:20px;
 }
 
 .navbar{
+  display:flex;
   flex-direction:column;
-  gap:10px;
+  align-items:center;
+  gap:12px;
 }
 
 header h1{
-  font-size:24px;
+  font-size:18px;
+  margin:0;
 }
+
+/* SEARCH BAR */
 
 #searchInput{
-  width:80%;
-  max-width:240px;
-  padding:16px 20px;
-  border-radius:14px;
+  width:70%;
+  max-width:220px;
+  height:42px;
+  padding:10px 14px;
   font-size:14px;
+  border-radius:12px;
 }
+
+/* CART */
 
 .cartBtn{
-  width:100%;
+  width:70%;
+  max-width:220px;
   justify-content:center;
-  padding:14px;
-  border-radius:16px;
+  padding:10px;
 }
 
+/* HERO */
+
 .hero{
-  min-height:60vh;
-  padding:160px 20px 80px;
-  background-position:center;
+  min-height:100vh;
+  padding:260px 20px 80px;
+}
+
+.heroContent{
+  max-width:100%;
 }
 
 .hero h1{
-  font-size:42px;
-  line-height:0.95;
-  letter-spacing:-1px;
+  font-size:32px;
+  line-height:1.1;
+  margin-bottom:15px;
 }
 
 .hero p{
-  font-size:18px;
-  line-height:1.8;
+  font-size:17px;
+  margin-bottom:25px;
 }
 
 .hero button{
-  width:100%;
-  max-width:320px;
-  padding:18px;
-  font-size:18px;
+  width:90%;
+  max-width:300px;
 }
-  
-#loader h1{
-  font-size:48px;
+
+.callNow{
+  display:block;
+  margin-top:15px;
 }
+
+.heroTrust{
+  margin-top:15px;
+  font-size:15px;
+  line-height:1.6;
+}
+
+/* OTHER */
 
 .slideBtn{
   display:none;
@@ -694,10 +718,6 @@ header h1{
 
 .slideCard{
   min-width:240px;
-}
-
-.slideCard img{
-  height:180px;
 }
 
 .products{
@@ -714,6 +734,7 @@ header h1{
 }
 
 }
+
 
 /* ANIMATIONS */
 
