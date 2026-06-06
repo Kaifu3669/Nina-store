@@ -920,3 +920,15 @@ header h1{
   width:100%;
   margin:15px 0 0;
 } 
+#orderSummary{
+  margin-top:20px;
+  padding:15px;
+  background:#1b1b1b;
+  border-radius:14px;
+  text-align:center;
+}
+
+#orderSummary h3{
+  margin-top:10px;
+  color:white;
+}
