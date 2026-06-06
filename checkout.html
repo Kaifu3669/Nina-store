@@ -276,12 +276,13 @@ required
 >
 
 <input
-type="text"
+type="tel"
 name="pincode"
 placeholder="PIN Code"
+pattern="[0-9]{6}"
 maxlength="6"
 required
-> 
+>
 
 <input
 type="text"
@@ -301,12 +302,20 @@ type="hidden"
 name="price"
 id="priceField"
 >
-
+  
+<input
+type="hidden"
+name="delivery_charge"
+value="50"
+> 
+  
 <p>
 After payment, enter your UTR number
 to confirm your order.
 </p>
 
+<div id="orderSummary"></div> 
+  
 <img
 src="qr.jpg"
 alt="QR Code"
@@ -338,6 +347,7 @@ localStorage.getItem("cart")
 
 let productNames = "";
 let total = 0;
+const deliveryCharge = 50;
 
 cart.forEach(item => {
 
@@ -357,10 +367,21 @@ document.getElementById(
 "productField"
 ).value = productNames || "No Product";
 
+let grandTotal =
+total + deliveryCharge;
+
 document.getElementById(
 "priceField"
-).value = "₹" + total;
+).value = "₹" + grandTotal; 
 
+document.getElementById(
+"orderSummary"
+).innerHTML = `
+<p>Products Total: ₹${total}</p>
+<p>Delivery Charges: ₹50</p>
+<h3>Total Payable: ₹${grandTotal}</h3>
+`;
+  
 </script>
   
 </body>
